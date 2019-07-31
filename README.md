@@ -11,7 +11,8 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 ```markdown
 Syntax highlighted code block
 
-![Flow of implementation](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/flow2.PNG)
+![flow2](https://user-images.githubusercontent.com/48829194/62204597-ccd85100-b38d-11e9-97df-d09e76e18ba1.PNG)
+
 
 # Header 1
 ## Header 2
