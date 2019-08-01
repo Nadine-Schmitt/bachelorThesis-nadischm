@@ -14,6 +14,10 @@ For training, the whole [English wikipedia dump](https://dumps.wikimedia.org/enw
 Firstly the wikipedia dump is downloaded and then the [WikiExtractor for Wikimentions](https://github.com/samuelbroscheit/wikiextractor-wikimentions) is used in order to convert the downloaded Bz2-files into several files of similiar size in a given directory. Each file contains several documents in a given document format. These are the input for the preproccesing, in which the text is prepared for the training of the word and entity embeddings.  An inputList_raw and inputList_entity is outputed, which are files, in which each row contains one sentence. They are used as input corpuses for the training of the word and entity embeddings with [word2vec](https://radimrehurek.com/gensim/models/word2vec.html). Afterwords, the models are evaluated with different evaluation tasks (by using Pearson correlation, Spearman correlation and Pairwise Accuracy as evaluation metrics).The results are compared with each other and to find out, if the Pearson and Spearman correlations are statistical significant, the p-value is calculated. To compare two pearson correlations the [cocor package in R](https://cran.r-project.org/web/packages/cocor/cocor.pdf) is used. The dataset for the entity evaluation task (Kore dataset) is only available in English, and therefore it is translated into the other languages.
 
 ## Download wikipedia dump
+To download the wikipedia dump, a directory have to be created with
+`` mkdir wikidump``
+and then the dump is downloaded with following command (where the URL is the filename of the wikidump):
+``wget "https://dumps.wikimedia.org/enwiki/20190201/enwiki-20190201-pages-articles-multistream.xml.bz2"``
 
 ## Extract wikipedia dump
 
