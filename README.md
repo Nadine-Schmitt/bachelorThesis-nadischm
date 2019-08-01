@@ -34,6 +34,15 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Further analysis
 
+# Qualitative examination
+
+A qualitative examination is done by using the SemanticArithmetic.py script. It can be run with following command:
+```markdown
+python SemanticArithmetic.py inputList_raw Parameter.txt -t 16
+``` 
+where `inputList_raw` is the input corpus for training, `Parameter.txt` the parameters for which the training should be done and `16 threads` are used. \\ \\
+The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is used in this script and it is a method to reduce the number of dimensions of highdimensional vectors, while keeping main features (= the principal components). Therefore firstly the model is trained with the specified parameters from `Parameter.txt` and afterwards, the high dimensions of the vectors (e.g. 300) are reduced to a two-dimensional representation and plotted with [pythons matplotlib](https://matplotlib.org for some word classes, e.g. 
+
 ### Results
 
 ### Markdown
