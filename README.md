@@ -21,7 +21,21 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ![flow2](https://user-images.githubusercontent.com/48829194/62204597-ccd85100-b38d-11e9-97df-d09e76e18ba1.PNG)
 
+### Download wikipedia dump
 
+### Extract wikipedia dump
+
+### Preprocessing
+
+### Training and Evaluation
+
+### Translation of Kore dataset
+
+### Compare two pearson correlations
+
+### Further analysis
+
+### Results
 
 ### Markdown
 
