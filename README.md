@@ -23,6 +23,11 @@ Firstly the wikipedia dump is downloaded and then the [WikiExtractor for Wikimen
 
 ## Translation of Kore dataset
 
+
+![TranslationKore](https://user-images.githubusercontent.com/48829194/62262835-6e0ce900-b41a-11e9-8408-448e33bc640b.PNG)
+
+
+
 ## Compare two pearson correlations
 
 ## Further analysis
