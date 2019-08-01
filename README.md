@@ -31,11 +31,16 @@ Firstly the wikipedia dump is downloaded and then the [WikiExtractor for Wikimen
 
 # Entity evaluation task
 
-The [Kore dataset]{https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/ambiverse-nlu/aida/} is used as entity task. The dataset contain a total of 441 entities. There are 21 seed entities and for each seed  there is a ranking of 20 candiadate entities, which are linked to by the Wikipedia article of the seed. 
+The [Kore dataset]{https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/ambiverse-nlu/aida/} is used as entity task. The dataset contain a total of 441 entities. There are 21 seed entities and for each seed  there is a ranking of 20 candiadate entities, which are linked to by the Wikipedia article of the seed. Example seed entities and Kore gold standard ranks of related entities are shown in following table:
 
 | Seed | Related entity (rank) |
 | ---- | --------------------- |
-Apple Inc. | Steve Jobs (1), Steve Wozniak (2) ... NeXT (10), Safari (web browser) (11) ...Ford Motor Company (20) |
+| Apple Inc. | Steve Jobs (1), Steve Wozniak (2) ... NeXT (10), Safari (web browser) (11) ...Ford Motor Company (20) |
+| Johnny Depp | Pirates of the Carribbean (1), Jack Sparrow (2) ...  Into the Great Wide Open (10), ... Mad Love (20) |
+| GTA IV | Niko Bellic (1), Liberty City (2) ...  New York (10), Bosnian War (11) ... Mothers Against Drunk Driving (20) |
+| The Sopranos | Tony Soprano (1), David Chase (2) ...  Golden Globe Award (10), The Kings (11) ... Big Love (20) |
+| Chuck Norris | Chuck Norris facts (1), Aaaron Norris (2) ... Northrop Corporation (10), ... Priscilla Presley (20) |
+
 
 ## Translation of Kore dataset
 
