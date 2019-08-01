@@ -4,6 +4,8 @@ In my bachelor thesis I trained embeddings from raw text (word embeddings) and f
 
                       Does entity annotations have an impact on the word embedding training process?
 
+An extensive parameter tuning were peformed and for the best parameters the results were checked with other algorithms of word embeddings using [gensim's fastText libary](https://radimrehurek.com/gensim/models/fasttext.html) and other languages (German, Italian, Spanish and French).
+
 You can use the [editor on GitHub](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
