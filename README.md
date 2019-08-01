@@ -32,6 +32,16 @@ is run in order that each articles dictionary contains an additional field ``int
 
 ## Preprocessing
 
+The preprocessing is done on NServer01 for each downloaded and extracted wikipedia dump (i.e. for each language) twice in order to get a raw input corpus and an entity annotated corpus. The preprocessing.py script can be run by calling the command
+\begin{lstlisting}[language=bash]
+python preproccesing.py WikiExtracted inputList_raw AcronymList -ger
+\end{lstlisting}
+for example for the german raw inputList and
+\begin{lstlisting}[language=bash]
+python preproccesing.py WikiExtracted inputList_entity AcronymList -e -ger
+\end{lstlisting}
+for the german entity inputList. So, the extracted wikipedia dump is needed as input, as well as an AcronomyList (it is explained in the following) . Moreover, it must also be specified if one would like to get an raw or entity corpus (with -e) and which language is used\footnote{ger for German, it for Italian, es for Spanish and fr for French}. Besides, the output is stored in the \textit{inputList\_raw} or \textit{inputList\_entity} directory. Optionally it is also possible to lower casing the input text (setting -l flag), however better word and entity embeddings are always achived when not lower casing the input corpora and therefore it is not applied.
+
 ## Training and Evaluation
 ### Word related evaluation task
 - Similarity353 (English, German, Italian)
