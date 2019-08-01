@@ -31,7 +31,7 @@ Firstly the wikipedia dump is downloaded and then the [WikiExtractor for Wikimen
 
 ### Entity evaluation task
 
-The [Kore dataset]{https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/ambiverse-nlu/aida/} is used as entity task. The dataset contain a total of 441 entities. There are 21 seed entities and for each seed  there is a ranking of 20 candiadate entities, which are linked to by the Wikipedia article of the seed. Example seed entities and Kore gold standard ranks of related entities are shown in following table:
+The [Kore dataset](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/ambiverse-nlu/aida/) is used as entity task. The dataset contain a total of 441 entities. There are 21 seed entities and for each seed  there is a ranking of 20 candiadate entities, which are linked to by the Wikipedia article of the seed. Example seed entities and Kore gold standard ranks of related entities are shown in following table:
 
 | Seed | Related entity (rank) |
 | ---- | --------------------- |
