@@ -20,28 +20,31 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ![flow2](https://user-images.githubusercontent.com/48829194/62204597-ccd85100-b38d-11e9-97df-d09e76e18ba1.PNG)
 
-### Download wikipedia dump
+# Download wikipedia dump
 
-### Extract wikipedia dump
+# Extract wikipedia dump
 
-### Preprocessing
+# Preprocessing
 
-### Training and Evaluation
+# Training and Evaluation
 
-### Translation of Kore dataset
+# Translation of Kore dataset
 
-### Compare two pearson correlations
+# Compare two pearson correlations
 
-### Further analysis
+# Further analysis
 
-# Qualitative examination
+## Qualitative examination
 
 A qualitative examination is done by using the SemanticArithmetic.py script. It can be run with following command:
 ```markdown
 python SemanticArithmetic.py inputList_raw Parameter.txt -t 16
 ``` 
-where `inputList_raw` is the input corpus for training, `Parameter.txt` the parameters for which the training should be done and `16 threads` are used. \\ \\
-The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is used in this script and it is a method to reduce the number of dimensions of highdimensional vectors, while keeping main features (= the principal components). Therefore firstly the model is trained with the specified parameters from `Parameter.txt` and afterwards, the high dimensions of the vectors (e.g. 300) are reduced to a two-dimensional representation and plotted with [pythons matplotlib](https://matplotlib.org for some word classes, e.g. 
+where `inputList_raw` is the input corpus for training, `Parameter.txt` the parameters for which the training should be done and `16 threads` are used. 
+The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is used in this script and it is a method to reduce the number of dimensions of highdimensional vectors, while keeping main features (= the principal components). Therefore firstly the model is trained with the specified parameters from `Parameter.txt` and afterwards, the high dimensions of the vectors (e.g. 300) are reduced to a two-dimensional representation and plotted with [pythons matplotlib](https://matplotlib.org) for some word classes, e.g. 
+
+![PCALanguage](https://user-images.githubusercontent.com/48829194/62262257-52084800-b418-11e9-9f79-1116f4e69eb9.png)
+
 
 ### Results
 
