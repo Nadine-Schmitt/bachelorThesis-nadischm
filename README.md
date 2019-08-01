@@ -4,7 +4,7 @@ In my bachelor thesis I trained embeddings from raw text (word embeddings) and f
 
                      Does entity annotations have an impact on the word embedding training process?
                      
-An extensive parameter tuning were peformed and for the best parameters the results were checked with other algorithms of word embeddings using [gensim's fastText libary](https://radimrehurek.com/gensim/models/fasttext.html) and other languages (German, Italian, Spanish and French).
+An extensive parameter tuning is peformed and for the best parameters the results are checked with other algorithms of word embeddings using [gensim's fastText libary](https://radimrehurek.com/gensim/models/fasttext.html) and other languages (German, Italian, Spanish and French).
 
 In the following figure an overview of the implementation is given:
 
@@ -24,6 +24,11 @@ wget "https://dumps.wikimedia.org/enwiki/20190201/enwiki-20190201-pages-articles
 ```
 
 ## Extract wikipedia dump
+Downloading the whole wikipedia dump just gives a b2z file and the texts from the Wikipedia database dump has to be extracted and cleaned by the WikiExtractor.py, which is a [Python script](https://github.com/attardi/wikiextractor). The extraction is done with the [WikiExtractor for Wikimentions](https://github.com/samuelbroscheit/wikiextractor-wikimentions) from Samuel Broscheit, which is a modified version of the WikiExtractor with the additional option to extract the internal Wikipedia links from an article. To do so, the WikiExtractor.py is downloaded. Then following command
+```markdown
+python ~/bin/WikiExtractor.py --json --filter_disambig_pages --processes 4 --collect_links /data/wikidump/enwiki-20190201-pages-articles-multistream.xml.bz2 -o /data/wikiExtracted
+```
+is run in order that each articles dictionary contains an additional field ``internal_links``. Running the command for the [English wikipedia dump](https://dumps.wikimedia.org/enwiki/), 5669083 articles are extracted. As result the /data/wikiExtracted directory has a size of 21GB and 213 subfolders (from AA to IE), which each has a size of 98MB and contains 100 files (from wiki_00 to wiki_99).
 
 ## Preprocessing
 
@@ -72,7 +77,7 @@ The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_compo
 
 ![PCALanguage](https://user-images.githubusercontent.com/48829194/62262257-52084800-b418-11e9-9f79-1116f4e69eb9.png)
 
-The countries and languages are grouped correctly. The connecting lines are approximately parallel and of the same length. So the concept of capitals and languages is understood by the word embedding model.
+In the figure above, the countries and languages are grouped correctly. The connecting lines are approximately parallel and of the same length. So the concept of capitals and languages is understood by the word embedding model.
 
 ## Results
 
