@@ -20,6 +20,15 @@ Firstly the wikipedia dump is downloaded and then the [WikiExtractor for Wikimen
 ## Preprocessing
 
 ## Training and Evaluation
+#Word related evaluation task
+- Similarity353 (English, German, Italian)
+- Relatedness353 (English, German, Italian)
+- MEN (English)
+- RG65 (English, German, Italian, Spanish, French)
+- MTurk (English)
+- SimLex999 (English, German, Italian, Spanish, French)
+- RareWord (English)
+
 
 ## Translation of Kore dataset
 
