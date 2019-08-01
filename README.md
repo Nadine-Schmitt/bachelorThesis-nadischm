@@ -1,4 +1,4 @@
-## Does entity annotations have an impact on the word embedding training process?
+# Does entity annotations have an impact on the word embedding training process?
 
 In my bachelor thesis I trained embeddings from raw text (word embeddings) and from entity annotated text (entity embeddings) with [gensim's word2vec libary](https://radimrehurek.com/gensim/models/word2vec.html) and evaluated them with word related tasks and entity tasks afterwords in order to answer following question:
 
@@ -20,21 +20,21 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ![flow2](https://user-images.githubusercontent.com/48829194/62204597-ccd85100-b38d-11e9-97df-d09e76e18ba1.PNG)
 
-# Download wikipedia dump
+## Download wikipedia dump
 
-# Extract wikipedia dump
+## Extract wikipedia dump
 
-# Preprocessing
+## Preprocessing
 
-# Training and Evaluation
+## Training and Evaluation
 
-# Translation of Kore dataset
+## Translation of Kore dataset
 
-# Compare two pearson correlations
+## Compare two pearson correlations
 
-# Further analysis
+## Further analysis
 
-## Qualitative examination
+### Qualitative examination
 
 A qualitative examination is done by using the SemanticArithmetic.py script. It can be run with following command:
 ```markdown
@@ -46,7 +46,7 @@ The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_compo
 ![PCALanguage](https://user-images.githubusercontent.com/48829194/62262257-52084800-b418-11e9-9f79-1116f4e69eb9.png)
 
 
-### Results
+## Results
 
 ### Markdown
 
