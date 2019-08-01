@@ -33,9 +33,9 @@ Firstly the wikipedia dump is downloaded and then the [WikiExtractor for Wikimen
 
 The [Kore dataset]{https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/ambiverse-nlu/aida/} is used as entity task. The dataset contain a total of 441 entities. There are 21 seed entities and for each seed  there is a ranking of 20 candiadate entities, which are linked to by the Wikipedia article of the seed. 
 
-|Seed      ||Related entity (rank)                                                                                |
-|----------||-----------------------------------------------------------------------------------------------------|
-Apple Inc. | Steve Jobs (1), Steve Wozniak (2) ... NeXT (10), Safari (web browser) (11) ...Ford Motor Company (20)|
+| Seed || Related entity (rank) |
+| ---- || ---------------------|
+Apple Inc. | Steve Jobs (1), Steve Wozniak (2) ... NeXT (10), Safari (web browser) (11) ...Ford Motor Company (20) |
 
 ## Translation of Kore dataset
 
