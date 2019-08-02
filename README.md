@@ -49,7 +49,7 @@ python
 import nltk
 nltk.download('punkt')
 ```
-
+Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html), since there can be a dot without ending of the sentence, when there is an acronym (Inc. for instance). If there is a dot and the next sentence starts with an upercase letter, then it is a new sentence. In the other case, the next sentence is appended to the current sentence. However there are examples like _i.e. Germany_, where after a dot there is an uppercase letter, but the sentence should not be splitted. Therefore an AcronomyList, which contains all acronyms with a dot of an given language, is used. If _i.e_  is for example in the AcronymList then the unwanted broken sentences are combined.
 
 
 ## Training and Evaluation
