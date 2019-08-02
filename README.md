@@ -129,8 +129,8 @@ cocor.dep.groups.overlap(r.jk, r.jh, r.kh, n, alternative = "two.sided", test = 
 ```
 where following arguments as input are required: 
 - **r.jk** is a number of specifying the correlation between j and k (this correlation is used for comparison) 
-- **r.jh$** is a number of specifying the correlation between j and $h$ (this correlation is used for comparison)
-- **r.kh$** is a number of specifying the correlation between k and h
+- **r.jh** is a number of specifying the correlation between j and h (this correlation is used for comparison)
+- **r.kh** is a number of specifying the correlation between k and h
 - **n** is an integer defining the size of the group
 - **alternative** is a character string specifying whether the alternative hypothesis is two-sided ("two.sided"; default) or one-sided ("greater" or "less", depending on the direction)
 - **test** is a vector of character strings specifying the tests ((pearson1898, hotelling1940, hendrickson1970, williams1959, olkin1967, dunn1969, steiger1980, meng1992, hittner2003, or zou2007) to be used. With "all" all tests are applied (default)
@@ -181,6 +181,78 @@ In addition, the [most_similar() function](https://radimrehurek.com/gensim/model
 
 
 ## Results
+Downloading the ``English wikipedia dump`` took about 2 hours and 2.22 hours to extract it. 2.13 hours were taken by preprocessing the English Wikipedia Dump for the ``raw inputList``, and 2.12 hours for the ``entity inputList``. More interesting, 269.43 days in total were taken by the training of the ``English raw`` and ``entity models`` and their evaluation.
+
+151 different parameter settings were used for training and all the results can be seen in Results.csv. 
+
+When taking the average of all spearman scores, the best score is achived with following parameter setting:
+\begin{itemize}
+	\item size = 300
+	\item windowSize = 3
+	\item minCount = 5
+	\item sg =1
+	\item hs = 0
+	\item negative sampling = 16
+\end{itemize} 
+as one can see in table \ref{tab:ResultBestParameter}. In the following the models with this parameter setting are called \textbf{best models}. On the raw model a better average score is achieved than on the entity model, however when comparing the scores on the word related tasks the raw and entity models are performed equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking on the results of the cocor package, which analyzes if two pearson correlations are the same. The null hypothesis, namley that pearson value 1 is equal to pearson value 2, is always retained. Detailled results can be found in the appendix. Furthermore, when analyzing the computed p-values of the Pearson and Spearman correlation, one can see that they are always much smaller then the conventionally used significance level of 5\%, 1\% and 0.1\% (see section \ref{sec:P-value}) and therefore it can be assumed that the correlations are statistically significant, as the null hypothesis, namely that there is no relationship, can be rejected. Unexpectely, the raw model performs better on the entity task than the entity model. \\ \\
+The best score on the entity task is achieved instead with follwing parameter setting:
+\begin{itemize}
+	\item size = 200
+	\item windowSize = 5
+	\item minCount = 5
+	\item sg = 0
+	\item hs = 0
+	\item negative sampling = 16
+	\item CBOW mean = 0
+\end{itemize} 
+as one can see in table \ref{tab:ResultBestParameterKore}. In the following the models with this parameter setting are called \textbf{best entity relatedness models}. It is quite interesting, that for this parameter setting the entity embeddings are performed better than the word embeddings on the entity task and also the average score is been higher. Another point to mention here is that when trying to get the scores for the entity task high, this is leaded to very low scores on the word related tasks, such as for example only a pearson correlation of 0,085 for the raw model and 0,197 for the entity model on the Similarity353 evaluation. Besides, raw and entity models are achieved not always equally scores on the word relatd tasks. The null hypothesis, 
+namley that pearson value 1 is equal to pearson value 2, is rejected on the Similarity353 and Men dataset, while it is retained on the others (detailled results can be found again in the appendix). \\ \\
+%\textcolor{red}{Maybe we could compare the results you get on Kore with current state of the art results (look at recent papers using KORE) to know how far these embeddings are from state of the art.} \\ \\
+In table \ref{tab:Result5BestParameters} and \ref{tab:Result5BestParametersKore} the 5 best parameter settings (size/windowSize/minCount/Sg/Hs/NegativeSampling/CBOWMean) for the average spearman score and 5 best parameter settings for the Kore spearman score are shown.
+Analysing them, one come to the fact that the 5 best avarage scores are achieved with the raw model, while the entity model is performed better on the 5 best parameters for the entity task (Kore spearman score). An interesting fact to mention here as well is that for the 5 best average scores always skipgram is used (sg = 1), while  for the 5 best Kore scores CBOW is used. According to Mikolav \cite{mikolov2013efficient} Skip Gram works well with a small amount of training data and represents even rare words or phrases well. CBOW instead is several times faster to train than skip gram and works better for more frequent words. To analyse this fact further, the frequency of the words in the Kore dataset is counted and the results are shown in section \ref{sec:Count}.
+\begin{table}[h]
+	
+	\centering
+	%\small
+	\makebox[\textwidth]{
+		\begin{tabular}[width=\textwidth]{c|c|c|c|c}
+			\multirow{2}{*}{Parameter Setting} &\multicolumn{2}{|c|}{Raw model} & \multicolumn{2}{|c}{Entity model} \\ & average & Kore & average & Kore
+			\\\hline
+			\hline
+			300/3/5/1/0/16 & \colorbox{green}{0.499} & \colorbox{green}{-0.302} & 0.477 & -0.464 \\\hline
+			300/3/5/1/0/8 & \colorbox{green}{0.498} & \colorbox{green}{-0.310} & 0.477 & -0.460 \\\hline
+			200/3/5/1/0/8 & \colorbox{green}{0.498} & \colorbox{green}{-0.274} & 0.471 & -0.441 \\\hline
+			300/5/5/1/0/8 & \colorbox{green}{0.497} & \colorbox{green}{-0.348} & 0.481 & -0.473 \\\hline
+			300/5/5/1/0/16 & \colorbox{green}{0.494} & \colorbox{green}{-0.351} & 0.478 & -0.485 
+			\\\hline\hline
+			
+	\end{tabular} }
+	\caption[Results 5 best parameter settings]{The 5 best parameter settings (size/windowSize/minCount/Sg/Hs/NegativeSampling/CBOWMean) for the average spearman score. The Kore spearman score is shown as well. The better one is \colorbox{green}{highlighted in green}}
+	\label{tab:Result5BestParameters}
+\end{table}
+\begin{table}[h]
+	
+	\centering
+	%\small
+	\makebox[\textwidth]{
+		\begin{tabular}[width=\textwidth]{c|c|c|c|c}
+			\multirow{2}{*}{Parameter Setting} &\multicolumn{2}{|c|}{Raw model} & \multicolumn{2}{|c}{Entity model} \\ & average & Kore & average & Kore
+			\\\hline
+			\hline
+			200/5/5/0/0/16/0 & 0.216 & -0.198 & \colorbox{green}{0.250} & \colorbox{green}{0.325} \\\hline
+			200/3/5/0/0/16/0 & 0.244 & -0.107 & \colorbox{green}{0.293} & \colorbox{green}{0.310} \\\hline
+			300/3/5/0/0/16/0 & 0.206 & -0.087 & \colorbox{green}{0.256} & \colorbox{green}{0.304} \\\hline
+			100/5/2/0/0/16/0 & 0.212 & -0.096 & \colorbox{green}{0.277} & \colorbox{green}{0.304} \\\hline
+			100/3/5/0/0/16/0 & 0.249 & -0.103 & \colorbox{green}{0.323} & \colorbox{green}{0.300} 
+			\\\hline\hline
+			
+	\end{tabular} }
+	\caption[Results 5 best parameter settings on entity task]{The 5 best parameter settings  (size/windowSize/minCount/Sg/Hs/NegativeSampling/CBOWMean) for the Kore spearman score. The average spearman score is shown as well. The better one is \colorbox{green}{highlighted in green}}
+	\label{tab:Result5BestParametersKore}
+\end{table} \\
+Summing up, following conclusion can be made: (i) When someone intends to obtain good embeddings for the entity task, this person should go with CBOW on a entity annotated corpus. However, this will only produce good embeddings for the entity task, not good embeddings for the word related tasks. In section \ref{sec:QualiataiveExaminations} it is analysed further what happens to embeddings in these configuration. (ii) A central role is played by the word embeddings algorithm, in particular better embeddings are generally produced by skip gram. \\ \\ %\textcolor{red}{You could dig a bit in the literature and see if others reach the same conclusion - do you have papers?}\\ \\
+When comparing the presented results to the results of the Heidelberg research group \cite{wordEmbeddings} following states can be made: (i) While it is seen a difference between word and entity embeddings on the word related tasks, namely that entity embeddings are worse, by Spitz et al., this is not acknowledged with the results in this bachelor thesis. Equal performance of word and entity embeddings can be seen on word related tasks. (ii) Also when focusing on entity tasks a difference to Spitz et al. is seen. It is said by them that word embeddings are better than entity embeddings on the entity clustering task. However it is shown by the results mentioned above that when trying to get best scores on the entity task than entity embeddings are advisable. Though for the best models, better results are achieved with the raw model on the entity task. To remark, it has to be said that a different entity task, namely the Kore task, is applied by the thesis. (iii) Finally is is postulated by the Heidelberg research group that when analyzing the entity neighboorhoods task entity embeddings are more focused on entities, while the word embeddings put a stronger emphasis on terms in the neighborhood. Related results are also given by this thesis, as one can see in section \ref{sec:MostSimiliar}.
+
 
 ### Markdown
 
