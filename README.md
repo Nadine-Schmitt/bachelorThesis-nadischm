@@ -76,14 +76,14 @@ sentences = gensim.models.word2vec.PathLineSentences(inputList)
 where ``inputList`` is the output dictionary from the preprocessing.py.
 Besides the training input corpus, there are also other parameters on the Word2Vec-constructor. An extensive parameter tuning is performed. The English models are trained with 151 different parameter settings, taking following into account (the number in the brackets are the settings, which are apllied):
 
--**Size**: Dimensionality of the word vectors (50,100,200,300)
--**WindowSize**: Maximum distance between the current and predicted word within a sentence (3,5)
--**Min_Count**: Ingnores all words with a lower frequency than this (2,5)
+- **Size**: Dimensionality of the word vectors (50,100,200,300)
+- **WindowSize**: Maximum distance between the current and predicted word within a sentence (3,5)
+- **Min_Count**: Ingnores all words with a lower frequency than this (2,5)
 - **workers**: Number of how many worker threads are ued to train the model(the servers, on which the training is done, have 16 VCPUs, hence this parameter is always set to 16}
--**Sg**: Training algorithm: 1 for skip-gram and 0 for CBOW (0,1)
--**Hs**: If 1, hierarchical softmax will be used for model training. If 0 and negative sampling is non-zero, negative sampling will be used (0,1)
--**Negative Sampling**: If >0, negative sampling will be used. The number specifies how many noise words should be drawn
--**CBOWMean**: Only applies, when CBOW is used. If 0, use the sum of the context word vectors and if 1 use the mean (0,1)
+- **Sg**: Training algorithm: 1 for skip-gram and 0 for CBOW (0,1)
+- **Hs**: If 1, hierarchical softmax will be used for model training. If 0 and negative sampling is non-zero, negative sampling will be used (0,1)
+- **Negative Sampling**: If >0, negative sampling will be used. The number specifies how many noise words should be drawn
+- **CBOWMean**: Only applies, when CBOW is used. If 0, use the sum of the context word vectors and if 1 use the mean (0,1)
 
 
 A new word2vec model is created extremely straightforward by following python code (note that the parameter setting is the setting, which leads to the best model):
