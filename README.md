@@ -217,60 +217,35 @@ Following results are achieved (Pearson and Spearman correlations of best entity
 
 ![BestEntityModel](https://user-images.githubusercontent.com/48829194/62344539-b564a980-b4ee-11e9-8a4d-5d4e593b0701.PNG)
 
-It is quite interesting, that for this parameter setting the entity embeddings perform better than the word embeddings on the entity task and also the average score is higher. Another point to mention here is that when trying to get the scores for the entity task high, this leads to very low scores on the word related tasks. Besides, raw and entity models archieve not always equal scores on the word relatd tasks. More details can be seen in the [results of the cocor package]().
+It is quite interesting, that for this parameter setting the entity embeddings perform better than the word embeddings on the entity task and also the average score is higher. Another point to mention here is that when trying to get the scores for the entity task high, this leads to very low scores on the word related tasks. Besides, raw and entity models archieve not always equal scores on the word relatd tasks. More details can be seen in the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor_BestEntityRelatednessModels.xlsx).
 
+In the following table the 5 best parameter settings for the average spearman score is shown:
 
 ![5Best](https://user-images.githubusercontent.com/48829194/62344549-bf86a800-b4ee-11e9-8919-080de3a9e68c.PNG)
+
+And the following table shows the 5 best parameter settings for the Kore spearman score:
+
 ![5BestEntity](https://user-images.githubusercontent.com/48829194/62344551-c31a2f00-b4ee-11e9-9928-e6b9b2a552ac.PNG)
 
+The 5 best avarage scores are achieved with the ``raw model``, while the ``entity model`` performs better on the 5 best parameters for the entity task (Kore spearman score). Furthermore, for the 5 best average scores always skipgram is used (sg = 1), while  for the 5 best Kore scores CBOW is used. 
+
+Summing up, following conclusion can be made: 
+1. When someone intends to obtain good embeddings for the entity task, this person should go with CBOW on a entity annotated corpus. However, this will only produce good embeddings for the entity task, not good embeddings for the word related tasks. 
+2. A central role plays the word embeddings algorithm, in particular better embeddings are generally produced by skip gram. 
+
+### FastText
+When training the embeddings with other algorithms (FastText) no other trend can be derived (see ... for more details).
+
+, no other trend can be derived
+
+
+### Other languages
+
+## Summary
 
 
 
-
-In table \ref{tab:Result5BestParameters} and \ref{tab:Result5BestParametersKore} the 5 best parameter settings (size/windowSize/minCount/Sg/Hs/NegativeSampling/CBOWMean) for the average spearman score and 5 best parameter settings for the Kore spearman score are shown.
-Analysing them, one come to the fact that the 5 best avarage scores are achieved with the raw model, while the entity model is performed better on the 5 best parameters for the entity task (Kore spearman score). An interesting fact to mention here as well is that for the 5 best average scores always skipgram is used (sg = 1), while  for the 5 best Kore scores CBOW is used. According to Mikolav \cite{mikolov2013efficient} Skip Gram works well with a small amount of training data and represents even rare words or phrases well. CBOW instead is several times faster to train than skip gram and works better for more frequent words. To analyse this fact further, the frequency of the words in the Kore dataset is counted and the results are shown in section \ref{sec:Count}.
-\begin{table}[h]
-	
-	\centering
-	%\small
-	\makebox[\textwidth]{
-		\begin{tabular}[width=\textwidth]{c|c|c|c|c}
-			\multirow{2}{*}{Parameter Setting} &\multicolumn{2}{|c|}{Raw model} & \multicolumn{2}{|c}{Entity model} \\ & average & Kore & average & Kore
-			\\\hline
-			\hline
-			300/3/5/1/0/16 & \colorbox{green}{0.499} & \colorbox{green}{-0.302} & 0.477 & -0.464 \\\hline
-			300/3/5/1/0/8 & \colorbox{green}{0.498} & \colorbox{green}{-0.310} & 0.477 & -0.460 \\\hline
-			200/3/5/1/0/8 & \colorbox{green}{0.498} & \colorbox{green}{-0.274} & 0.471 & -0.441 \\\hline
-			300/5/5/1/0/8 & \colorbox{green}{0.497} & \colorbox{green}{-0.348} & 0.481 & -0.473 \\\hline
-			300/5/5/1/0/16 & \colorbox{green}{0.494} & \colorbox{green}{-0.351} & 0.478 & -0.485 
-			\\\hline\hline
-			
-	\end{tabular} }
-	\caption[Results 5 best parameter settings]{The 5 best parameter settings (size/windowSize/minCount/Sg/Hs/NegativeSampling/CBOWMean) for the average spearman score. The Kore spearman score is shown as well. The better one is \colorbox{green}{highlighted in green}}
-	\label{tab:Result5BestParameters}
-\end{table}
-\begin{table}[h]
-	
-	\centering
-	%\small
-	\makebox[\textwidth]{
-		\begin{tabular}[width=\textwidth]{c|c|c|c|c}
-			\multirow{2}{*}{Parameter Setting} &\multicolumn{2}{|c|}{Raw model} & \multicolumn{2}{|c}{Entity model} \\ & average & Kore & average & Kore
-			\\\hline
-			\hline
-			200/5/5/0/0/16/0 & 0.216 & -0.198 & \colorbox{green}{0.250} & \colorbox{green}{0.325} \\\hline
-			200/3/5/0/0/16/0 & 0.244 & -0.107 & \colorbox{green}{0.293} & \colorbox{green}{0.310} \\\hline
-			300/3/5/0/0/16/0 & 0.206 & -0.087 & \colorbox{green}{0.256} & \colorbox{green}{0.304} \\\hline
-			100/5/2/0/0/16/0 & 0.212 & -0.096 & \colorbox{green}{0.277} & \colorbox{green}{0.304} \\\hline
-			100/3/5/0/0/16/0 & 0.249 & -0.103 & \colorbox{green}{0.323} & \colorbox{green}{0.300} 
-			\\\hline\hline
-			
-	\end{tabular} }
-	\caption[Results 5 best parameter settings on entity task]{The 5 best parameter settings  (size/windowSize/minCount/Sg/Hs/NegativeSampling/CBOWMean) for the Kore spearman score. The average spearman score is shown as well. The better one is \colorbox{green}{highlighted in green}}
-	\label{tab:Result5BestParametersKore}
-\end{table} \\
-Summing up, following conclusion can be made: (i) When someone intends to obtain good embeddings for the entity task, this person should go with CBOW on a entity annotated corpus. However, this will only produce good embeddings for the entity task, not good embeddings for the word related tasks. In section \ref{sec:QualiataiveExaminations} it is analysed further what happens to embeddings in these configuration. (ii) A central role is played by the word embeddings algorithm, in particular better embeddings are generally produced by skip gram. \\ \\ %\textcolor{red}{You could dig a bit in the literature and see if others reach the same conclusion - do you have papers?}\\ \\
-When comparing the presented results to the results of the Heidelberg research group \cite{wordEmbeddings} following states can be made: (i) While it is seen a difference between word and entity embeddings on the word related tasks, namely that entity embeddings are worse, by Spitz et al., this is not acknowledged with the results in this bachelor thesis. Equal performance of word and entity embeddings can be seen on word related tasks. (ii) Also when focusing on entity tasks a difference to Spitz et al. is seen. It is said by them that word embeddings are better than entity embeddings on the entity clustering task. However it is shown by the results mentioned above that when trying to get best scores on the entity task than entity embeddings are advisable. Though for the best models, better results are achieved with the raw model on the entity task. To remark, it has to be said that a different entity task, namely the Kore task, is applied by the thesis. (iii) Finally is is postulated by the Heidelberg research group that when analyzing the entity neighboorhoods task entity embeddings are more focused on entities, while the word embeddings put a stronger emphasis on terms in the neighborhood. Related results are also given by this thesis, as one can see in section \ref{sec:MostSimiliar}.
+Following answers to the given research question (RQ) and  its derivational subquestions (SQ) from section  \ref{sec:ResearchQuestion} can be given: (RQ) First of all, entity annotations has no significant impact on the word embedding training process. This means if one should recommend someone whether he or she should use word or entity embeddings, the answer would mostly be using word embeddings. Nevertheless, one can see sometimes differences: While one can not seen an impact on the word related tasks, better performance is reached with entity embeddings on the entity task, while for the best models better performance on the entity task is reached by the raw embeddings. Moreover, when trying to get the scores for the entity task high, only worse performance is reached on the world related tasks. Subquestion 1 (SQ1) is also answered by this statement, because  different results are achieved with different evaluation tasks. Besides, when training the embeddings with other algorithms, no other trend can be derived (SQ2) and it is postulated that entity annotation has also no impact on word related tasks, when training the embeddings with other languages, expect from the Spain and French language. Better performance is also for other languages reached with entity embeddings on the entity task and in constast to the English models also for the best models better performance on the entity task is reached by the entity embeddings (SQ3). Besides, other very interesting results are made in addition to the answers of the reseach question and its derivational subquestions. When analyzing the count of words from the Kore dataset a contradicting result to the literature can be seen and reaching only worse performance on the word related tasks do not imply completely noise embeedings as it is shown by the qualitative examination of these embeddings. Finally it is found that the Kore task is not suitable for the comparison of word and entity embeddings. \\ \\
 
 
 ### Markdown
