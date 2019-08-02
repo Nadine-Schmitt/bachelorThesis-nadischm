@@ -193,34 +193,13 @@ When taking the average of all spearman scores, the best score is achived with f
 - hs = 0
 - negative sampling = 16
 
-Following results are achieved (Pearson and Spearman correlations of models with parameter setting 300/3/5/1/0/16 and the corresponding p-values in brackets. The better one is highlighted in green):
+The models with this parameter setting are called **best models**.
+Following results are achieved (Pearson and Spearman correlations of best models with parameter setting 300/3/5/1/0/16 and the corresponding p-values in brackets. The better one is highlighted in green):
+
+![BestModelResult](https://user-images.githubusercontent.com/48829194/62343975-8816fc00-b4ec-11e9-8bef-2706b10ca331.PNG)
 
 
-
-
-			\multirow{2}{*}{MTurk} & Pearson & 0.556 (1.39E-24)
-			& \colorbox{green}{0.574 (1.84E-26)} \\ & Spearman & 0.512 (4.53E-20)
-			& \colorbox{green}{0.529 (6.45E-22)}\\\hline
-			\multirow{2}{*}{SimLex999} & Pearson & \colorbox{green}{0.416 (5.38E-43)}
-			& 0.414 (1.52E-42) \\ & Spearman & \colorbox{green}{0.409 (1.99E-41)} & 0.409 (2.12E-41) \\\hline
-			\multirow{2}{*}{Rareword} & Pearson & \colorbox{green}{0.421 (5.09E-88)}
-			& 0.414 (8.08E-85) \\ & Spearman & \colorbox{green}{0.447 (2.99E-100)} & 0.445 (2.32E-99) \\\hline\hline
-			\multirow{2}{*}{Kore} & Spearman & \colorbox{green}{-0.302} & -0.464 \\ & Pairwise Accuracy & \colorbox{green}{0.392}  & 0.334 \\\hline\hline
-			\multicolumn{2}{c|}{average score spearman} & \colorbox{green}{0.499} & 0.477
-			\\\hline\hline
-			
-	\end{tabular} }
-	\caption[Reults of the best models in detail]{Pearson and Spearman correlations of the best models with parameter setting 300/3/5/1/0/16 and the corresponding p-values in brackets. The better one is \colorbox{green}{highlighted in green}}
-	\label{tab:ResultBestParameter}
-\end{table}
-
-
-
-
-
-
-
-In the following the models with this parameter setting are called \textbf{best models}. On the raw model a better average score is achieved than on the entity model, however when comparing the scores on the word related tasks the raw and entity models are performed equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking on the results of the cocor package, which analyzes if two pearson correlations are the same. The null hypothesis, namley that pearson value 1 is equal to pearson value 2, is always retained. Detailled results can be found in the appendix. Furthermore, when analyzing the computed p-values of the Pearson and Spearman correlation, one can see that they are always much smaller then the conventionally used significance level of 5\%, 1\% and 0.1\% (see section \ref{sec:P-value}) and therefore it can be assumed that the correlations are statistically significant, as the null hypothesis, namely that there is no relationship, can be rejected. Unexpectely, the raw model performs better on the entity task than the entity model. \\ \\
+On the ``raw model`` a better average score is achieved than on the ``entity model``, however when comparing the scores on the word related tasks the raw and entity models perform equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking on the [results of the cocor package](https://cran.r-project.org/web/packages/cocor/cocor.pdf), which analyzes if two pearson correlations are the same. The null hypothesis, namley that pearson value 1 is equal to pearson value 2, is always retained. Detailled results can be found in the appendix. Furthermore, when analyzing the computed p-values of the Pearson and Spearman correlation, one can see that they are always much smaller then the conventionally used significance level of 5\%, 1\% and 0.1\% (see section \ref{sec:P-value}) and therefore it can be assumed that the correlations are statistically significant, as the null hypothesis, namely that there is no relationship, can be rejected. Unexpectely, the raw model performs better on the entity task than the entity model. \\ \\
 The best score on the entity task is achieved instead with follwing parameter setting:
 \begin{itemize}
 	\item size = 200
