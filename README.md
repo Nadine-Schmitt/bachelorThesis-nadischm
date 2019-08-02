@@ -187,7 +187,7 @@ Downloading the ``English wikipedia dump`` took about 2 hours and 2.22 hours to 
 
 151 different parameter settings were used for training and all the results can be seen in [Results.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results.xlsx).
 
-### Best Models
+### Best Models and best entity relatedness models
 When taking the average of all spearman scores, the best score is achived with following parameter setting:
 - size = 300
 - item windowSize = 3
@@ -203,7 +203,6 @@ Following results are achieved (Pearson and Spearman correlations of best models
 
 On the ``raw model`` a better average score is achieved than on the ``entity model``, however when comparing the scores on the word related tasks the raw and entity models perform equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking on the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor_BestModels.xlsx). The null hypothesis, namley that pearson value 1 is equal to pearson value 2, is always retained. Furthermore, when analyzing the computed p-values of the Pearson and Spearman correlation, one can see that they are always much smaller then the conventionally used significance level of 5%, 1% and 0.1% and therefore it can be assumed that the correlations are statistically significant.
 
-### Best entity relatedness models
 The best score on the entity task is achieved instead with follwing parameter setting:
 - size = 200
 - windowSize = 5
@@ -216,11 +215,18 @@ The best score on the entity task is achieved instead with follwing parameter se
 The models with this parameter setting are called **best entity relatedness models**.
 Following results are achieved (Pearson and Spearman correlations of best entity relatedness models with parameter setting 200/5/5/0/0/16/0 and the corresponding p-values in brackets. The better one is highlighted in green):
 
+![BestEntityModel](https://user-images.githubusercontent.com/48829194/62344539-b564a980-b4ee-11e9-8a4d-5d4e593b0701.PNG)
+
+It is quite interesting, that for this parameter setting the entity embeddings perform better than the word embeddings on the entity task and also the average score is higher. Another point to mention here is that when trying to get the scores for the entity task high, this leads to very low scores on the word related tasks. Besides, raw and entity models archieve not always equal scores on the word relatd tasks. More details can be seen in the [results of the cocor package]().
 
 
-It is quite interesting, that for this parameter setting the entity embeddings are performed better than the word embeddings on the entity task and also the average score is been higher. Another point to mention here is that when trying to get the scores for the entity task high, this is leaded to very low scores on the word related tasks, such as for example only a pearson correlation of 0,085 for the raw model and 0,197 for the entity model on the Similarity353 evaluation. Besides, raw and entity models are achieved not always equally scores on the word relatd tasks. The null hypothesis, 
-namley that pearson value 1 is equal to pearson value 2, is rejected on the Similarity353 and Men dataset, while it is retained on the others (detailled results can be found again in the appendix). \\ \\
-%\textcolor{red}{Maybe we could compare the results you get on Kore with current state of the art results (look at recent papers using KORE) to know how far these embeddings are from state of the art.} \\ \\
+![5Best](https://user-images.githubusercontent.com/48829194/62344549-bf86a800-b4ee-11e9-8919-080de3a9e68c.PNG)
+![5BestEntity](https://user-images.githubusercontent.com/48829194/62344551-c31a2f00-b4ee-11e9-9928-e6b9b2a552ac.PNG)
+
+
+
+
+
 In table \ref{tab:Result5BestParameters} and \ref{tab:Result5BestParametersKore} the 5 best parameter settings (size/windowSize/minCount/Sg/Hs/NegativeSampling/CBOWMean) for the average spearman score and 5 best parameter settings for the Kore spearman score are shown.
 Analysing them, one come to the fact that the 5 best avarage scores are achieved with the raw model, while the entity model is performed better on the 5 best parameters for the entity task (Kore spearman score). An interesting fact to mention here as well is that for the 5 best average scores always skipgram is used (sg = 1), while  for the 5 best Kore scores CBOW is used. According to Mikolav \cite{mikolov2013efficient} Skip Gram works well with a small amount of training data and represents even rare words or phrases well. CBOW instead is several times faster to train than skip gram and works better for more frequent words. To analyse this fact further, the frequency of the words in the Kore dataset is counted and the results are shown in section \ref{sec:Count}.
 \begin{table}[h]
