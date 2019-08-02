@@ -54,6 +54,8 @@ Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility]
 
 ## Training and Evaluation
 ### Word related evaluation task
+The word related task is based on the idea that the similarity between two words can be measured with the cosine similarity of their word embeddings. A list of word pairs along with their similarity rating, which is judged by human annotators, have to be provided and  following goldstandards are used:
+
 - Similarity353 (English, German, Italian)
 - Relatedness353 (English, German, Italian)
 - MEN (English)
@@ -61,6 +63,9 @@ Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility]
 - MTurk (English)
 - SimLex999 (English, German, Italian, Spanish, French)
 - RareWord (English)
+
+The evaluation task is to measure how well the notion of word similarity according to human annotators is captured by the word embeddings. In other words, the distances between words in an embedding space can be evaluated through the human judgments on the actual semantic distances between these words. Once the cosine similarity between the words is computed, the two obtained distances are then compared with each other using Pearson or Spearman correlation (see section \ref{sec:Pearson} and  \ref{sec:Spearman}. The
+more similar they are (i.e. pearson or spearman score is closed to 1), the better are embeddings \cite{baroni2014don}. To conclude the task provides some insight into how well the trsined eord embeddings capture intuitive notions of word similarity.
 
 ### Entity evaluation task
 
