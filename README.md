@@ -234,53 +234,13 @@ Summing up, following conclusion can be made:
 2. A central role plays the word embeddings algorithm, in particular better embeddings are generally produced by skip gram. 
 
 ### FastText
-When training the embeddings with other algorithms (FastText) no other trend can be derived (see ... for more details).
-
-, no other trend can be derived
-
+When training the embeddings with other algorithms (FastText) no other trend can be derived (see [ResultFastText.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_FastText.xlsx)for more details).
 
 ### Other languages
+Entity annotation has also no impact on word related tasks, when training the embeddings with other languages, expect from the Spain and French language. Better performance is also for other languages reached with entity embeddings on the entity task and in constrast to the English models also for the best models better performance on the entity task is reached by the entity embeddings. ... give more details.
+
 
 ## Summary
+First of all, **entity annotation has no significant impact on the word embedding training process**. This means if one should recommend someone whether he or she should use word or entity embeddings, the answer would mostly be using word embeddings. Nevertheless, one can see sometimes differences: While one can not see an impact on the word related tasks, better performance is reached with entity embeddings on the entity task, while for the best models better performance on the entity task is reached by the raw embeddings. Moreover, when trying to get the scores for the entity task high, only worse performance is reached on the world related tasks. However,  reaching only worse performance on the word related tasks do not imply completely noise embeedings as it is shown by the qualitative examination of these embeddings. 
 
 
-
-Following answers to the given research question (RQ) and  its derivational subquestions (SQ) from section  \ref{sec:ResearchQuestion} can be given: (RQ) First of all, entity annotations has no significant impact on the word embedding training process. This means if one should recommend someone whether he or she should use word or entity embeddings, the answer would mostly be using word embeddings. Nevertheless, one can see sometimes differences: While one can not seen an impact on the word related tasks, better performance is reached with entity embeddings on the entity task, while for the best models better performance on the entity task is reached by the raw embeddings. Moreover, when trying to get the scores for the entity task high, only worse performance is reached on the world related tasks. Subquestion 1 (SQ1) is also answered by this statement, because  different results are achieved with different evaluation tasks. Besides, when training the embeddings with other algorithms, no other trend can be derived (SQ2) and it is postulated that entity annotation has also no impact on word related tasks, when training the embeddings with other languages, expect from the Spain and French language. Better performance is also for other languages reached with entity embeddings on the entity task and in constast to the English models also for the best models better performance on the entity task is reached by the entity embeddings (SQ3). Besides, other very interesting results are made in addition to the answers of the reseach question and its derivational subquestions. When analyzing the count of words from the Kore dataset a contradicting result to the literature can be seen and reaching only worse performance on the word related tasks do not imply completely noise embeedings as it is shown by the qualitative examination of these embeddings. Finally it is found that the Kore task is not suitable for the comparison of word and entity embeddings. \\ \\
-
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-![flow2](https://user-images.githubusercontent.com/48829194/62204597-ccd85100-b38d-11e9-97df-d09e76e18ba1.PNG)
-
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
