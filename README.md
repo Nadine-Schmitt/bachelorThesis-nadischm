@@ -42,6 +42,16 @@ python preproccesing.py WikiExtracted inputList_entity AcronymList -e -ger
 ```
 for the ``german entity inputList``. So, the ``extracted wikipedia dump`` is needed as input, as well as an AcronomyList. Moreover, it have to be also specified if one would like to get an raw or entity corpus (with ``-e``) and which language is used (``ger`` for German, ``it`` for Italian, ``es`` for Spanish and ``fr`` for French}. Besides, the output is stored in the ``inputList_raw`` or ``inputList_entity`` directory. Optionally it is also possible to lower casing the input text (setting ``-l`` flag), however better word and entity embeddings are always achived when not lower casing the input corpora and therefore it is not applied.
 
+Note, that for splitting the text into a list of individual sentences (word2vec requires text, which is organized into sentences, as input) [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html) is used and have to be imported beforehand by running following commands:
+```markdown
+mkdir nltk_data
+python
+import nltk
+nltk.download('punkt')
+```
+
+
+
 ## Training and Evaluation
 ### Word related evaluation task
 - Similarity353 (English, German, Italian)
