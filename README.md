@@ -85,6 +85,7 @@ Google
 For the word embeddings, the similarity of the word embedding ``Google`` with the word embedding of ``Larry`` plus the word embedding of ``Page`` is measured. When considering entity embeddings, the similarity of the entity embedding ``Google`` with the entity embedding of ``Larry_Page`` is measured. Afterwords, a ranking based on the similarity score is produced, for instance
 \begin{lstlisting}[language=Python]
 ```markdown
+Google	
 	Google Maps (1)
 	Larry Page (2)
 	Sergey Brin (3)
