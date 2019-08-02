@@ -183,7 +183,7 @@ In addition, the [most_similar() function](https://radimrehurek.com/gensim/model
 ## Results
 Downloading the ``English wikipedia dump`` took about 2 hours and 2.22 hours to extract it. 2.13 hours were taken by preprocessing the English Wikipedia Dump for the ``raw inputList``, and 2.12 hours for the ``entity inputList``. More interesting, 269.43 days in total were taken by the training of the ``English raw`` and ``entity models`` and their evaluation.
 
-151 different parameter settings were used for training and all the results can be seen in Results.csv. 
+151 different parameter settings were used for training and all the results can be seen in [Results.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results.xlsx).
 
 When taking the average of all spearman scores, the best score is achived with following parameter setting:
 \begin{itemize}
