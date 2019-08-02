@@ -255,7 +255,7 @@ When taking the average of all spearman scores, the best score is achived with f
 The models with this parameter setting are called **best models**.
 Following results are achieved (Pearson and Spearman correlations of best models with parameter setting 300/3/5/1/0/16 and the corresponding p-values in brackets. The better one is highlighted in green):
 
-![BestModelResult](https://user-images.githubusercontent.com/48829194/62343975-8816fc00-b4ec-11e9-8bef-2706b10ca331.PNG)
+![BestModelResult](https://user-images.githubusercontent.com/48829194/62346708-62432480-b4f7-11e9-8012-dce25a7715f5.PNG)
 
 On the ``raw model`` a better average score is achieved than on the ``entity model``, however when comparing the scores on the word related tasks the raw and entity models perform equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking on the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor_BestModels.xlsx). The null hypothesis, namley that pearson value 1 is equal to pearson value 2, is always retained. Furthermore, when analyzing the computed p-values of the Pearson and Spearman correlation, one can see that they are always much smaller then the conventionally used significance level of 5%, 1% and 0.1% and therefore it can be assumed that the correlations are statistically significant.
 
@@ -271,7 +271,7 @@ The best score on the entity task is achieved instead with follwing parameter se
 The models with this parameter setting are called **best entity relatedness models**.
 Following results are achieved (Pearson and Spearman correlations of best entity relatedness models with parameter setting 200/5/5/0/0/16/0 and the corresponding p-values in brackets. The better one is highlighted in green):
 
-![BestEntityModel](https://user-images.githubusercontent.com/48829194/62344539-b564a980-b4ee-11e9-8a4d-5d4e593b0701.PNG)
+![BestEntityModel](https://user-images.githubusercontent.com/48829194/62346711-666f4200-b4f7-11e9-9e2b-12673dd710a8.PNG)
 
 It is quite interesting, that for this parameter setting the entity embeddings perform better than the word embeddings on the entity task and also the average score is higher. Another point to mention here is that when trying to get the scores for the entity task high, this leads to very low scores on the word related tasks. Besides, raw and entity models archieve not always equal scores on the word relatd tasks. More details can be seen in the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor_BestEntityRelatednessModels.xlsx).
 
