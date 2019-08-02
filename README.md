@@ -123,7 +123,8 @@ The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_compo
 In the figure above, the countries and languages are grouped correctly. The connecting lines are approximately parallel and of the same length. So the concept of capitals and languages is understood by the word embedding model.
 
 In addition, the [most_similar() function](https://radimrehurek.com/gensim/models/keyedvectors.html#gensim.models.keyedvectors.WordEmbeddingsKeyedVectors.most_similar) of gensim is used to show related words to a given word, e.g. cucumber:
-![SemanticArithmetic_Cucumber](https://user-images.githubusercontent.com/48829194/62340509-1afd6980-b4e0-11e9-9166-4cf23d996cb7.PNG)
+
+![SemanticArithmetic_Cucumber](https://user-images.githubusercontent.com/48829194/62340643-8d6e4980-b4e0-11e9-827e-84cd27e2b8f2.PNG)
 
 ## Results
 
