@@ -53,7 +53,62 @@ Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility]
 
 
 ## Training and Evaluation
-### Word related evaluation task
+
+###
+
+For training word and entity embeddings and evaluating them the main.py script is used. It can be run by typing following command:
+```markdown
+python main.py inputList_raw inputList_entity goldstandard 3 Parameter.txt -t 16
+```
+where the ``inputList_raw`` and  ``inputList_entity`` are the preprocessend input corpuses, ``goldstandard`` is the directory with all the [goldstandard datastes](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) for evaluation (e.g. Similarity353 dataset),  ``3`` specifies that 3 training iterations are done, ``Parameter.txt`` is the parameter setting, which should be used for training and ``16 threads`` are used for training.
+Note, that for each parameter setting a raw and an entity model is trained and evaluated directly afterwords, because the models are to big to save them on disk and reload them in a later point in time.
+
+### Training with word2vec
+In order to use [gensim's word2vec libary](https://radimrehurek.com/gensim/models/word2vec.html), Gensim have to be installed with following commands:
+```markdown
+sudo chmod -R 777 bin
+easy_install --upgrade gensim
+```
+For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text have to be loaded and organized into senteces and and one have to provide these sentences to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.PathLineSentence) is used and the preprocessed input corpus is loaded as following:
+```markdown
+sentences = gensim.models.word2vec.PathLineSentences(inputList)
+```
+where ``inputList`` is the output dictionary from the preprocessing.py.
+Besides the training input corpus, there are also other parameters on the Word2Vec-constructor. An extensive parameter tuning is performed. The English models are trained with 151 different parameter settings, taking following into account (the number in the brackets are the settings, which are apllied):
+
+-**Size**: Dimensionality of the word vectors (50,100,200,300)
+-**WindowSize**: Maximum distance between the current and predicted word within a sentence (3,5)
+-**Min_Count**: Ingnores all words with a lower frequency than this (2,5)
+- **workers**: Number of how many worker threads are ued to train the model(the servers, on which the training is done, have 16 VCPUs, hence this parameter is always set to 16}
+-**Sg**: Training algorithm: 1 for skip-gram and 0 for CBOW (0,1)
+-**Hs**: If 1, hierarchical softmax will be used for model training. If 0 and negative sampling is non-zero, negative sampling will be used (0,1)
+-**Negative Sampling**: If >0, negative sampling will be used. The number specifies how many noise words should be drawn
+-**CBOWMean**: Only applies, when CBOW is used. If 0, use the sum of the context word vectors and if 1 use the mean (0,1)
+
+
+A new word2vec model is created extremely straightforward by following python code (note that the parameter setting is the setting, which leads to the best model):
+```markdown
+from gensim.models import Word2Vec
+
+model = Word2Vec(sentences, size=300, window=3, min_count=5, workers=16, sg=1, hs=0, negative=16, cbow_mean=1)
+````
+
+### Training with other algorithms: FastText
+Word and entity embeddings are not only trained with word2vec, but also with FastText. There is also a [Python Gensim implementation of FastText](https://radimrehurek.com/gensim/models/fasttext.html).
+Instead of using the ``Word2Vec`` class, the ``FastText`` class is used to train a FastText model. The parameter are still the same:
+```markdown
+from gensim.models import FastText
+
+model = FastText(sentences, size=300, window=3, min_count=5, workers=16, sg=1, hs=0, negative=16, cbow_mean=1)
+````
+
+### Training with other languages 
+Easily speaking, all the things discussed above, are alo applied for the training in other languages. Everything is done as for the English models, just other ``input corpuses`` and the ``translated goldstandard datasets`` are used. Finally note, that these models are only trained for the best parameter settings from the English models, hence no intensive parameter tuning is done for the cross-lingual languages.  
+
+### Evaluation 
+After training, the word and entity embeddings are directly evaluated with following evaluation tasks: 
+
+#### Word related evaluation task
 The word related task is based on the idea that the similarity between two words can be measured with the cosine similarity of their word embeddings. A list of word pairs along with their similarity rating, which is judged by human annotators, have to be provided and  following [goldstandards](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) are used. Note that not all datasets are available in all languages:
 
 - Similarity353 (English, German, Italian)
@@ -66,7 +121,7 @@ The word related task is based on the idea that the similarity between two words
 
 The evaluation task is to measure how well the notion of word similarity according to human annotators is captured by the word embeddings. In other words, the distances between words in an embedding space can be evaluated through the human judgments on the actual semantic distances between these words. Once the cosine similarity between the words is computed, the two obtained distances are then compared with each other using Pearson or Spearman correlation. The more similar they are (i.e. Pearson or Spearman score is closed to 1), the better are the embeddings. 
 
-### Entity evaluation task
+#### Entity evaluation task
 
 The [Kore dataset](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/ambiverse-nlu/aida/) is used as entity task. The dataset contain a total of 441 entities. There are 21 seed entities and for each seed there is a ranking of 20 candidate entities, which are linked to by the Wikipedia article of the seed. Example seed entities and Kore gold standard ranks of related entities are shown in following table:
 
@@ -108,6 +163,7 @@ where the ``KoreDataset.txt`` is the source folder of the original English Kore 
 The resulting [new datasets](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) are availble and can be downloaded. 
 
 To translate a single entity from the English Kore dataset the [MediaWkiki Action API](https://www.mediawiki.org/wiki/API:Search) is used. For each English entity in the Kore dataset (which has an English wikipedia page), the corresponding wikipedia page in the target language is searched and then taken as translated entity. In the following code snippet the English entity _Google_ is translated into the German entity _Google+_:
+
 ![TranslationKore](https://user-images.githubusercontent.com/48829194/62262835-6e0ce900-b41a-11e9-8408-448e33bc640b.PNG)
 
 Note that if there is no wikipedia page in the target language available, the English wikipage name is used. 
