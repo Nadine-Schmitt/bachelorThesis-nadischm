@@ -1,8 +1,8 @@
-# Does entity annotations have an impact on the word embedding training process?
+# The impact of entity annotations on the word embedding training process?
 
 In my bachelor thesis I trained embeddings from raw text (word embeddings) and from entity annotated text (entity embeddings) with [gensim's word2vec libary](https://radimrehurek.com/gensim/models/word2vec.html) and evaluated them with word related tasks and entity tasks afterwords in order to answer following question:
 
-                     Does entity annotations have an impact on the word embedding training process?
+                     Do entity annotations have an impact on the word embedding training process?
                      
 An extensive parameter tuning is peformed and for the best parameters the results are checked with other algorithms of word embeddings using [gensim's fastText libary](https://radimrehurek.com/gensim/models/fasttext.html) and other languages (German, Italian, Spanish and French).
 
