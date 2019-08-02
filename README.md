@@ -109,6 +109,17 @@ Due to the reason that the Kore dataset is only avaiable in English, it is trans
 
 ## Further analysis
 
+### Frequency of words
+In order to calculate for the entities of the Kore dataset the number of occurence in the ``raw`` and ``entity input corpus`` the CountWords_Raw.py and CountWords_entity.py scripts are used and can be run with following command:
+```markdown
+python CountWords_Raw.py Kore.txt inputList_raw
+```
+for the ``raw model`` and 
+```markdown
+python CountWords_Entity.py Kore.txt inputList_entity
+```
+for the ``entity model``. ``Kore.txt`` is the Kore dataset in the corresponding language and the second argument is the ``input corpus``. The fuctionality is quite simple: For each entity from the Kore datatset the number of occurence is calculated and printed as output. The results can be seen in the [excel sheets]().
+
 ### Qualitative examination
 
 A qualitative examination is done by using the SemanticArithmetic.py script. It can be run with following command:
@@ -125,6 +136,7 @@ In the figure above, the countries and languages are grouped correctly. The conn
 In addition, the [most_similar() function](https://radimrehurek.com/gensim/models/keyedvectors.html#gensim.models.keyedvectors.WordEmbeddingsKeyedVectors.most_similar) of gensim is used to show related words to a given word, e.g. cucumber:
 
 ![SemanticArithmetic_Cucumber](https://user-images.githubusercontent.com/48829194/62340643-8d6e4980-b4e0-11e9-827e-84cd27e2b8f2.PNG)
+
 
 ## Results
 
