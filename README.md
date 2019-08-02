@@ -74,6 +74,24 @@ The [Kore dataset](https://www.mpi-inf.mpg.de/departments/databases-and-informat
 | The Sopranos | Tony Soprano (1), David Chase (2) ...  Golden Globe Award (10), The Kings (11) ... Big Love (20) |
 | Chuck Norris | Chuck Norris facts (1), Aaaron Norris (2) ... Northrop Corporation (10), ... Priscilla Presley (20) |
 
+To measure how good the produced word and entity embeddings capture the semantic relatedness between entites following is done: For each seed entity of the Kore dataset a ranking of the 20 candidate entities is produced by using the ``word embeddings`` and the ``entity embeddings``. When using the ``word embeddings`` the similarity between the word embedding of the seed entity and the sum of the word embeddings of the single words is measured by using cosine similarity. When using entity embeddings only the entity embeddings of the given entites have to be considered. To illustarte this, a short example is given:
+Let Google be the seed entity with 3 candidate entities ranked as follows:
+```markdown
+Google
+	Larry Page (1)
+	Sergey Brin (2)
+	Google Maps (3)
+```
+For the word embeddings, the similarity of the word embedding ``Google`` with the word embedding of ``Larry`` plus the word embedding of ``Page`` is measured. When considering entity embeddings, the similarity of the entity embedding ``Google`` with the entity embedding of ``Larry_Page`` is measured. Afterwords, a ranking based on the similarity score is produced, for instance
+\begin{lstlisting}[language=Python]
+```markdown
+	Google Maps (1)
+	Larry Page (2)
+	Sergey Brin (3)
+```
+Then the quality of the correlation between the gold ranking from Kore and the produced ranking is measured in terms of Spearman correlation and Pairwise accuracy. As result, one have for each entity seed a Spearman and Pairwise Accuracy score. Finally, it is averaged and for each method final value is reported.
+
+Due to the reason that the Kore dataset is only avaiable in English, it is translated into German, Italian, Spanish and French. 
 
 ## Translation of Kore dataset
 
