@@ -293,7 +293,7 @@ Summing up, following conclusion can be made:
 When training the embeddings with other algorithms (FastText) no other trend can be derived (see [ResultFastText.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_FastText.xlsx)for more details).
 
 ### Other languages
-Entity annotation has also no impact on word related tasks, when training the embeddings with other languages, expect from the Spain and French language. Better performance is also for other languages reached with entity embeddings on the entity task and in constrast to the English models also for the best models better performance on the entity task is reached by the entity embeddings. [Results_German.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_German.xlsx) give more details.
+Entity annotation has also no impact on word related tasks, when training the embeddings with other languages, expect from the Spain and French language. Better performance is also for other languages reached with entity embeddings on the entity task and in constrast to the English models also for the best models better performance on the entity task is reached by the entity embeddings. [Results_German.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_German.xlsx), [results_Italian.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_Italian.xlsx) give more details.
 
 
 ## Summary
