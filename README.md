@@ -275,7 +275,7 @@ Following results are achieved (Pearson and Spearman correlations of best entity
 
 It is quite interesting, that for this parameter setting the entity embeddings perform better than the word embeddings on the entity task and also the average score is higher. Another point to mention here is that when trying to get the scores for the entity task high, this leads to very low scores on the word related tasks. Besides, raw and entity models archieve not always equal scores on the word relatd tasks. More details can be seen in the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor_BestEntityRelatednessModels.xlsx).
 
-In the following table the 5 best parameter settings for the average spearman score is shown (see [Results_5BestParameters_Average_and_Kore.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_5BestParameters_Avarage_and_Kore.xlsx) for mote details):
+In the following table the 5 best parameter settings for the average spearman score is shown (see [Results_5BestParameters_Average_and_Kore.xlsx]https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_5BestParameters_Average_and_Kore.xlsx) for more details):
 
 ![5Best](https://user-images.githubusercontent.com/48829194/62344549-bf86a800-b4ee-11e9-8919-080de3a9e68c.PNG)
 
