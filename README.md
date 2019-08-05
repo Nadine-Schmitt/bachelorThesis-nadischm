@@ -210,12 +210,12 @@ As output all results of the tests are shown and the null hypothesis is for this
 
 ![OutputCocot](https://user-images.githubusercontent.com/48829194/62342257-86e2d080-b4e6-11e9-8685-94fb930be027.PNG)
 
-All the calculated results can be seen on the [excel files].
+All the calculated results can be seen on the [excel files](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/Results/ResultsCocor).
 
 ## Further analysis
 
 ### Frequency of words
-In order to calculate for the entities of the Kore dataset the number of occurence in the ``raw`` and ``entity input corpus`` the CountWords_Raw.py and CountWords_entity.py scripts are used and can be run with following command:
+In order to calculate the number of occurence in the ``raw`` and ``entity input corpus`` for the entities of the KORE dataset the [CountWords_Raw.py] and [CountWords_entity.py] scripts are used and can be run with following command:
 ```markdown
 python CountWords_Raw.py Kore.txt inputList_raw
 ```
@@ -223,7 +223,8 @@ for the ``raw model`` and
 ```markdown
 python CountWords_Entity.py Kore.txt inputList_entity
 ```
-for the ``entity model``. ``Kore.txt`` is the Kore dataset in the corresponding language and the second argument is the ``input corpus``. The fuctionality is quite simple: For each entity from the Kore datatset the number of occurence is calculated and printed as output. The results can be seen in the [excel sheets](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/Results/FrequencyWords).
+for the ``entity model``. ``Kore.txt`` is the KORE dataset in the corresponding language and the second argument is the ``input corpus``. The fuctionality is simple: For each entity from the KORE datatset the number of occurences is calculated and printed as output. The results can be seen in the [excel files](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/Results/FrequencyWords).
+
 
 ### Qualitative examination
 
