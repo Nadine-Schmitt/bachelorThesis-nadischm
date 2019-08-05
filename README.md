@@ -228,7 +228,7 @@ for the ``entity model``. ``Kore.txt`` is the KORE dataset in the corresponding 
 
 ### Qualitative examination
 
-A qualitative examination is done by using the [SemanticArithmetic.py]() script. It can be run with following command:
+A qualitative examination is done by using the [SemanticArithmetic.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/SemanticArithmetic.py) script. It can be run with following command:
 ```markdown
 python SemanticArithmetic.py inputList_raw Parameter.txt -t 16
 ``` 
@@ -243,20 +243,20 @@ In addition, the [most_similar() function](https://radimrehurek.com/gensim/model
 
 ![SemanticArithmetic_Cucumber](https://user-images.githubusercontent.com/48829194/62340643-8d6e4980-b4e0-11e9-827e-84cd27e2b8f2.PNG)
 
-The [SemanticArithmetic ipython notebook]() present more examples.
+The [SemanticArithmetic ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/SemanticArithmetic.ipynb) present more examples.
 
 ## Results
 
 ### Training times
-Downloading the ``English wikipedia dump`` took about 2 hours and 2.22 hours to extract it. 2.13 hours were taken by preprocessing the English Wikipedia Dump for the ``raw inputList``, and 2.12 hours for the ``entity inputList``. More interesting, 269.43 days in total were taken by the training of the ``English raw`` and ``entity models`` and their evaluation.
+Downloading the ``English Wikipedia dump`` took about two hours and extracting it took 2.22 hours. Around 2.13 hours were taken by preprocessing the extracted English Wikipedia dump for the ``raw inputList``, and 2.12 hours for the ``entity inputList``. More interesting, 269.43 days in total were taken by the training of the ``English raw`` ,``entity models`` and their evaluation. Moreover, for training the best models in other languages, more days were needed: The training of the best German models took about 7.61 days, 4.59 days for the Italian best models, about 5.10 days for the Spanish best models and finally roughly 6.31 days for the French best models.
 
 151 different parameter settings were used for training and all the results can be seen in [Results.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results.xlsx).
 
 ### Best Models and best entity relatedness models
-When taking the average of all spearman scores, the best score is achived with following parameter setting:
+When taking the average of all Spearman scores, the best score is achieved with following parameter setting:
 - size = 300
-- item windowSize = 3
-- minCount = 5
+- window size = 3
+- min count = 5
 - sg =1
 - hs = 0
 - negative sampling = 16
@@ -267,6 +267,9 @@ Following results are achieved (Pearson and Spearman correlations of best models
 ![BestModelResult](https://user-images.githubusercontent.com/48829194/62346708-62432480-b4f7-11e9-8012-dce25a7715f5.PNG)
 
 On the ``raw model`` a better average score is achieved than on the ``entity model``, however when comparing the scores on the word related tasks the raw and entity models perform equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking on the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor_BestModels.xlsx). The null hypothesis, namley that pearson value 1 is equal to pearson value 2, is always retained. Furthermore, when analyzing the computed p-values of the Pearson and Spearman correlation, one can see that they are always much smaller then the conventionally used significance level of 5%, 1% and 0.1% and therefore it can be assumed that the correlations are statistically significant.
+
+On the raw model a better average score is achieved compared to the entity model, however, when comparing the scores on the word related tasks the raw and entity models performe equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking at the results of the cocor package, which analyses if two Pearson correlations are the same. The null hypothesis, namely that Pearson value 1 is equal to Pearson value 2, is always retained. Detailed results can be found on the USB flash drive, as well as on the GitHub project\footnote{\url{https://github.com/Nadine-Schmitt/bachelorThesis-nadischm}}. Furthermore, when analysing the computed p-values of the Pearson and Spearman correlation, they are always smaller than the conventionally used significance level of 5\%, 1\% and 0.1\% (see section \ref{sec:P-value}). Therefore it can be assumed that the correlations are statistically significant, as the null hypothesis, namely that there is no relationship, can be rejected. Unexpected, the raw model performs better on the entity task than the entity model.
+
 
 The best score on the entity task is achieved instead with follwing parameter setting:
 - size = 200
