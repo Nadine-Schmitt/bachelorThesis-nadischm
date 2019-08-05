@@ -266,7 +266,7 @@ Following results are achieved (Pearson and Spearman correlations of best models
 
 ![Best1](https://user-images.githubusercontent.com/48829194/62492699-96f0fd80-b7cf-11e9-923e-9f636173c247.PNG)
 
-On the ``raw model`` a better average score is achieved compared the ``entity model``, however, when comparing the scores on the word related tasks the raw and entity models perform equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking on the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor_BestModels.xlsx). The null hypothesis, namely that Pearson value 1 is equal to Pearson value 2, is always retained. Furthermore, when analysing the computed p-values of the Pearson and Spearman correlation, one can see that they are always much smaller then the conventionally used significance level of 5%, 1% and 0.1%. Therefore it can be assumed that the correlations are statistically significant. Unexpected, the raw model performs better on the entity task than the entity model.
+On the ``raw model`` a better average score is achieved compared the ``entity model``, however, when comparing the scores on the word related tasks the raw and entity models perform equally, which means that entity annotation has no impact on the word related tasks. This is acknowledged when looking on the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor/ResultsCocor_BestModels.xlsx). The null hypothesis, namely that Pearson value 1 is equal to Pearson value 2, is always retained. Furthermore, when analysing the computed p-values of the Pearson and Spearman correlation, one can see that they are always much smaller then the conventionally used significance level of 5%, 1% and 0.1%. Therefore it can be assumed that the correlations are statistically significant. Unexpected, the raw model performs better on the entity task than the entity model.
 
 The best score on the entity task is achieved instead with following parameter setting:
 - size = 200
@@ -283,18 +283,17 @@ Following results are achieved (Pearson and Spearman correlations of best entity
 ![Best2](https://user-images.githubusercontent.com/48829194/62492706-9a848480-b7cf-11e9-8657-f84265a99e01.PNG)
 
 
-It is interesting, that for this parameter setting the entity embeddings perform better than the word embeddings on the entity task and also the average score is higher. Another point to mention here is that when trying to get the scores for the entity task high, this leads to very low scores on the word related tasks. Besides, raw and entity models achieve not always equally scores on the word relatd tasks. More details can be seen in the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor_BestEntityRelatednessModels.xlsx).
+It is interesting, that for this parameter setting the entity embeddings perform better than the word embeddings on the entity task and also the average score is higher. Another point to mention here is that when trying to get the scores for the entity task high, this leads to very low scores on the word related tasks. Besides, raw and entity models achieve not always equally scores on the word relatd tasks. More details can be seen in the [results of the cocor package](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/ResultsCocor/ResultsCocor_BestEntityRelatednessModels.xlsx).
 
-
-In the following table the 5 best parameter settings for the average spearman score is shown (see [Results_5BestParameters_Average_and_Kore.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_5BestParameters_Average_and_Kore.xlsx) for more details):
+In the following table the five best parameter settings for the average Spearman score is shown (see [Results_5BestParameters_Average_and_Kore.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_5BestParameters_Average_and_Kore.xlsx) for more details):
 
 ![5Best](https://user-images.githubusercontent.com/48829194/62344549-bf86a800-b4ee-11e9-8919-080de3a9e68c.PNG)
 
-And the following table shows the 5 best parameter settings for the Kore spearman score:
+And the following table shows the five best parameter settings for the KORE Spearman score:
 
 ![5BestEntity](https://user-images.githubusercontent.com/48829194/62344551-c31a2f00-b4ee-11e9-9928-e6b9b2a552ac.PNG)
 
-The 5 best avarage scores are achieved with the ``raw model``, while the ``entity model`` performs better on the 5 best parameters for the entity task (Kore spearman score). Furthermore, for the 5 best average scores always skipgram is used (sg = 1), while  for the 5 best Kore scores CBOW is used. 
+The five best avarage scores are achieved with the ``raw model``, while the ``entity model`` performs better on the 5 best parameters for the entity task (Kore spearman score). Furthermore, for the 5 best average scores always skipgram is used (sg = 1), while  for the 5 best Kore scores CBOW is used. 
 
 Summing up, following conclusion can be made: 
 1. When someone intends to obtain good embeddings for the entity task, this person should go with CBOW on a entity annotated corpus. However, this will only produce good embeddings for the entity task, not good embeddings for the word related tasks. 
