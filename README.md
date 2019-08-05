@@ -10,7 +10,7 @@ In the following figure an overview of the implementation is given:
 
 ![flow2](https://user-images.githubusercontent.com/48829194/62204597-ccd85100-b38d-11e9-97df-d09e76e18ba1.PNG)
 
-For training, the whole [English Wikipedia dump](https://dumps.wikimedia.org/enwiki/) (and [German Wikipedia dump](https://dumps.wikimedia.org/dewiki/), [Italian Wikipedia dump](https://dumps.wikimedia.org/itwiki/), [Spanish Wikipedia dump](https://dumps.wikimedia.org/eswiki/), [French Wikipedia dump](https://dumps.wikimedia.org/frwiki/) respectively) is used.
+For training, the entire [English Wikipedia dump](https://dumps.wikimedia.org/enwiki/) (and [German Wikipedia dump](https://dumps.wikimedia.org/dewiki/), [Italian Wikipedia dump](https://dumps.wikimedia.org/itwiki/), [Spanish Wikipedia dump](https://dumps.wikimedia.org/eswiki/), [French Wikipedia dump](https://dumps.wikimedia.org/frwiki/) respectively) is used.
 Firstly the Wikipedia dump is downloaded and then the [WikiExtractor for WikiMentions](https://github.com/samuelbroscheit/wikiextractor-wikimentions) is used in order to convert the downloaded Bz2-files into several files of similar size in a given directory. Each file contains several documents in a given document format. These are the input for the preprocessing, in which the text is prepared for the training of the word and entity embeddings.  An ``inputList_raw`` and ``inputList_entity`` is outputed, which are files, in which each row contains one sentence. They are used as input corpuses for the training of the word and entity embeddings with [Word2Vec](https://radimrehurek.com/gensim/models/word2vec.html). Afterwards, the models are evaluated with different evaluation tasks (by using Pearson correlation, Spearman correlation and Pairwise Accuracy as evaluation metrics).The results are compared with each other and to find out, if the Pearson and Spearman correlations are statistical significant, the p-value is calculated. To compare two Pearson correlations the [cocor package in R](https://cran.r-project.org/web/packages/cocor/cocor.pdf) is used. The dataset for the entity evaluation task (KORE dataset) is only available in English, and therefore it is translated into the other languages.
 
 ## Download Wikipedia dump
@@ -24,7 +24,7 @@ wget "https://dumps.wikimedia.org/enwiki/20190201/enwiki-20190201-pages-articles
 ```
 
 ## Extract Wikipedia dump
-Downloading the entire Wikipedia dump just gives a Bz2-file and the texts from the Wikipedia database dump has to be extracted and cleaned by the WikiExtractor.py, which is a [Python script](https://github.com/attardi/wikiextractor). The extraction is done with the [WikiExtractor for WikiMentions](https://github.com/samuelbroscheit/wikiextractor-wikimentions) from Samuel Broscheit, which is a modified version of the WikiExtractor with the additional option to extract the internal Wikipedia links from an article. To do so, the WikiExtractor.py is downloaded. Then following command
+Downloading the entire Wikipedia dump just gives a Bz2-file and the texts from the Wikipedia database dump has to be extracted and cleaned by the [WikiExtractor.py](), which is a [Python script](https://github.com/attardi/wikiextractor). The extraction is done with the [WikiExtractor for WikiMentions](https://github.com/samuelbroscheit/wikiextractor-wikimentions) from Samuel Broscheit, which is a modified version of the WikiExtractor with the additional option to extract the internal Wikipedia links from an article. To do so, the WikiExtractor.py is downloaded. Then following command
 ```markdown
 python ~/bin/WikiExtractor.py --json --filter_disambig_pages --processes 4 --collect_links /data/wikidump/enwiki-20190201-pages-articles-multistream.xml.bz2 -o /data/wikiExtracted
 ```
@@ -216,7 +216,7 @@ for the ``raw model`` and
 ```markdown
 python CountWords_Entity.py Kore.txt inputList_entity
 ```
-for the ``entity model``. ``Kore.txt`` is the Kore dataset in the corresponding language and the second argument is the ``input corpus``. The fuctionality is quite simple: For each entity from the Kore datatset the number of occurence is calculated and printed as output. The results can be seen in the [excel sheets]().
+for the ``entity model``. ``Kore.txt`` is the Kore dataset in the corresponding language and the second argument is the ``input corpus``. The fuctionality is quite simple: For each entity from the Kore datatset the number of occurence is calculated and printed as output. The results can be seen in the [excel sheets](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/Results/FrequencyWords).
 
 ### Qualitative examination
 
