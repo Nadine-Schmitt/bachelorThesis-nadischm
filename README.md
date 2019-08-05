@@ -32,7 +32,7 @@ is run in order that each articles dictionary contains an additional field ``int
 
 ## Preprocessing
 
-The preprocessing is done for each downloaded and extracted Wikipedia dump (i.e. for each language) twice in order to get a ``raw input corpus`` and an ``entity annotated corpus``. The [preprocessing.py]() script can be run by calling the command
+The preprocessing is done for each downloaded and extracted Wikipedia dump (i.e. for each language) twice in order to get a ``raw input corpus`` and an ``entity annotated corpus``. The [preprocessing.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/preprocessing.py) script can be run by calling the command
 ```markdown
 python preproccesing.py WikiExtracted inputList_raw AcronymList -ger
 ```
@@ -40,16 +40,18 @@ for example for the ``german raw inputList`` and
 ```markdown
 python preproccesing.py WikiExtracted inputList_entity AcronymList -e -ger
 ```
-for the ``german entity inputList``. So, the ``extracted wikipedia dump`` is needed as input, as well as an [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists). Moreover, it have to be also specified if one would like to get an raw or entity corpus (with ``-e``) and which language is used (``ger`` for German, ``it`` for Italian, ``es`` for Spanish and ``fr`` for French}. Besides, the output is stored in the ``inputList_raw`` or ``inputList_entity`` directory. Optionally it is also possible to lower casing the input text (setting ``-l`` flag), however better word and entity embeddings are always achived when not lower casing the input corpora and therefore it is not applied.
+for the ``german entity inputList``. So, the ``extracted Wikipedia dump`` is needed as input, as well as an [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists). Moreover, it must also be specified if a need arises for a raw or entity corpus (with parameter -e) and the decision of which language is used (``ger`` for German, ``it`` for Italian, ``es`` for Spanish and ``fr`` for French}. Besides, the output is stored in the ``inputList_raw`` or ``inputList_entity`` directory. Optionally it is also possible to lower casing the input text (setting ``-l`` flag), however, better word and entity embeddings are always achived when not lower casing the input corpora, why it is not applied.
 
-Note, that for splitting the text into a list of individual sentences (word2vec requires text, which is organized into sentences, as input) [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html) is used and have to be imported beforehand by running following commands:
+Note, that for splitting the text into a list of individual sentences (Word2Vec requires text, which is organized into sentences, as input) [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html) is used and have to be imported beforehand by running following commands:
 ```markdown
 mkdir nltk_data
 python
 import nltk
 nltk.download('punkt')
 ```
-Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html), since there can be a dot without ending of the sentence, when there is an acronym (Inc. for instance). If there is a dot and the next sentence starts with an upercase letter, then it is a new sentence. In the other case, the next sentence is appended to the current sentence. However there are examples like _i.e. Germany_, where after a dot there is an uppercase letter, but the sentence should not be splitted. Therefore an [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists), which contains all acronyms with a dot of an given language, is used. If _i.e_  is for example in the [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists) then the unwanted broken sentences are combined.
+Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html), since there can be a dot without the sentence ending, when there is an acronym (Inc. for instance). If there is a dot and the next sentence starts with an uppercase letter, then it is a new sentence. In the other case, the next sentence is appended to the current sentence. However, there are examples like _i.e. Germany_, where after a dot there is an uppercase letter, but the sentence should not be split. Therefore an [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists), which contains all acronyms with a dot of a given language, is used. If _i.e_  is for example in the [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists) then the unwanted broken sentences are combined.
+
+See the [preprocessing ipython notebook]() for more details.
 
 
 ## Training and Evaluation
