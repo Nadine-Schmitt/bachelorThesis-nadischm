@@ -24,7 +24,7 @@ wget "https://dumps.wikimedia.org/enwiki/20190201/enwiki-20190201-pages-articles
 ```
 
 ## Extract Wikipedia dump
-Downloading the entire Wikipedia dump just gives a Bz2-file and the texts from the Wikipedia database dump has to be extracted and cleaned by the [WikiExtractor.py](), which is a [Python script](https://github.com/attardi/wikiextractor). The extraction is done with the [WikiExtractor for WikiMentions](https://github.com/samuelbroscheit/wikiextractor-wikimentions) from Samuel Broscheit, which is a modified version of the WikiExtractor with the additional option to extract the internal Wikipedia links from an article. To do so, the WikiExtractor.py is downloaded. Then following command
+Downloading the entire Wikipedia dump just gives a Bz2-file and the texts from the Wikipedia database dump has to be extracted and cleaned by the [WikiExtractor.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/WikiExtractor.py), which is a [Python script](https://github.com/attardi/wikiextractor). The extraction is done with the [WikiExtractor for WikiMentions](https://github.com/samuelbroscheit/wikiextractor-wikimentions) from Samuel Broscheit, which is a modified version of the WikiExtractor with the additional option to extract the internal Wikipedia links from an article. To do so, the [WikiExtractor.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/WikiExtractor.py) is downloaded. Then following command
 ```markdown
 python ~/bin/WikiExtractor.py --json --filter_disambig_pages --processes 4 --collect_links /data/wikidump/enwiki-20190201-pages-articles-multistream.xml.bz2 -o /data/wikiExtracted
 ```
@@ -32,7 +32,7 @@ is run in order that each articles dictionary contains an additional field ``int
 
 ## Preprocessing
 
-The preprocessing is done for each downloaded and extracted wikipedia dump (i.e. for each language) twice in order to get a ``raw input corpus`` and an ``entity annotated corpus``. The preprocessing.py script can be run by calling the command
+The preprocessing is done for each downloaded and extracted Wikipedia dump (i.e. for each language) twice in order to get a ``raw input corpus`` and an ``entity annotated corpus``. The [preprocessing.py]() script can be run by calling the command
 ```markdown
 python preproccesing.py WikiExtracted inputList_raw AcronymList -ger
 ```
