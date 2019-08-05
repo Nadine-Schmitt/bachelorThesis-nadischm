@@ -215,7 +215,7 @@ All the calculated results can be seen on the [excel files](https://github.com/N
 ## Further analysis
 
 ### Frequency of words
-In order to calculate the number of occurence in the ``raw`` and ``entity input corpus`` for the entities of the KORE dataset the [CountWords_Raw.py] and [CountWords_entity.py] scripts are used and can be run with following command:
+In order to calculate the number of occurence in the ``raw`` and ``entity input corpus`` for the entities of the KORE dataset the [CountWords_Raw.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_RAW.py) and [CountWords_entity.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_Entity.py) scripts are used and can be run with following command (see the [CountWords_Raw](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_RAW.ipynb) and [CountWords_Entity ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_Entity.ipynb)):
 ```markdown
 python CountWords_Raw.py Kore.txt inputList_raw
 ```
@@ -228,21 +228,22 @@ for the ``entity model``. ``Kore.txt`` is the KORE dataset in the corresponding 
 
 ### Qualitative examination
 
-A qualitative examination is done by using the SemanticArithmetic.py script. It can be run with following command:
+A qualitative examination is done by using the [SemanticArithmetic.py]() script. It can be run with following command:
 ```markdown
 python SemanticArithmetic.py inputList_raw Parameter.txt -t 16
 ``` 
 where `inputList_raw` is the input corpus for training, `Parameter.txt` the parameters for which the training should be done and `16 threads` are used. 
-The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is used in this script and it is a method to reduce the number of dimensions of highdimensional vectors, while keeping main features (= the principal components). Therefore firstly the model is trained with the specified parameters from `Parameter.txt` and afterwards, the high dimensions of the vectors (e.g. 300) are reduced to a two-dimensional representation and plotted with [pythons matplotlib](https://matplotlib.org) for some word classes, e.g. countries and their their correspondig languages:
+The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is used in this script and it is a method to reduce the number of dimensions of highdimensional vectors, while keeping main features (= the principal components). At first the model is trained with the specified parameters from `Parameter.txt` and afterwards, the high dimensions of the vectors (e.g. 300) are reduced to a two-dimensional representation and plotted with [pythons matplotlib](https://matplotlib.org) for some word classes, e.g. countries and their their corresponding languages:
 
 ![PCALanguage](https://user-images.githubusercontent.com/48829194/62262257-52084800-b418-11e9-9f79-1116f4e69eb9.png)
 
 In the figure above, the countries and languages are grouped correctly. The connecting lines are approximately parallel and of the same length. So the concept of capitals and languages is understood by the word embedding model.
 
-In addition, the [most_similar() function](https://radimrehurek.com/gensim/models/keyedvectors.html#gensim.models.keyedvectors.WordEmbeddingsKeyedVectors.most_similar) of gensim is used to show related words to a given word, e.g. cucumber:
+In addition, the [most_similar() function](https://radimrehurek.com/gensim/models/keyedvectors.html#gensim.models.keyedvectors.WordEmbeddingsKeyedVectors.most_similar) of Gensim is used to show related words to a given word, e.g. cucumber:
 
 ![SemanticArithmetic_Cucumber](https://user-images.githubusercontent.com/48829194/62340643-8d6e4980-b4e0-11e9-827e-84cd27e2b8f2.PNG)
 
+The [SemanticArithmetic ipython notebook]() present more examples.
 
 ## Results
 
