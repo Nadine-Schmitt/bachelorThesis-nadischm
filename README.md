@@ -58,37 +58,37 @@ See the [preprocessing ipython notebook](https://github.com/Nadine-Schmitt/bache
 
 ###
 
-For training word and entity embeddings and evaluating them the [main.py]() script is used (see the [main ipython notebook]()). It can be run by typing following command:
+For training word and entity embeddings and evaluating them the [main.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/main.py) script is used (see the [main ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/main.ipynb)). It can be run by typing following command:
 ```markdown
 python main.py inputList_raw inputList_entity goldstandard 3 Parameter.txt -t 16
 ```
-where the ``inputList_raw`` and  ``inputList_entity`` are the preprocessend input corpuses, ``goldstandard`` is the directory with all the [goldstandard datastes](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) for evaluation (e.g. Similarity353 dataset),  ``3`` specifies that 3 training iterations are done, ``Parameter.txt`` is the parameter setting, which should be used for training and ``16 threads`` are used for training.
-Note, that for each parameter setting a raw and an entity model is trained and evaluated directly afterwords, because the models are to big to save them on disk and reload them in a later point in time.
+where the ``inputList_raw`` and  ``inputList_entity`` are the preprocessed input corpuses, ``goldstandard`` is the directory with all the [gold standard datastes](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) for evaluation (e.g. Similarity353 dataset),  ``3`` specifies that three training iterations are done. ``Parameter.txt`` is the parameter setting, which should be applied and ``16 threads`` are used for training.
+Note, that for each parameter setting a raw and an entity model is trained and evaluated directly afterwords, because the models are to big to be saved on a disk and reloaded on a later point in time.
 
-### Training with word2vec
-In order to use [gensim's word2vec libary](https://radimrehurek.com/gensim/models/word2vec.html), Gensim have to be installed with following commands:
+### Training with Word2Vec
+In order to use [Gensim's Word2Vec libary](https://radimrehurek.com/gensim/models/word2vec.html), Gensim have to be installed with following commands:
 ```markdown
 sudo chmod -R 777 bin
 easy_install --upgrade gensim
 ```
-For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text have to be loaded and organized into senteces and and one have to provide these sentences to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.PathLineSentence) is used and the preprocessed input corpus is loaded as following:
+For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text is needed to be loaded and organised into sentences and provided to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.PathLineSentence) is applied and the preprocessed input corpus is loaded as following:
 ```markdown
 sentences = gensim.models.word2vec.PathLineSentences(inputList)
 ```
-where ``inputList`` is the output dictionary from the preprocessing.py.
-Besides the training input corpus, there are also other parameters on the Word2Vec-constructor. An extensive parameter tuning is performed. The English models are trained with 151 different parameter settings, taking following into account (the number in the brackets are the settings, which are apllied):
+where ``inputList`` is the output dictionary from the [preprocessing.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/preprocessing.py).
+Besides the training input corpus, there are also other parameters on the Word2Vec-constructor. An extensive parameter tuning is performed. The English models are trained with 151 different parameter settings, taking following into account (the number in the brackets are the settings, which are applied):
 
-- **Size**: Dimensionality of the word vectors (50,100,200,300)
-- **WindowSize**: Maximum distance between the current and predicted word within a sentence (3,5)
-- **Min_Count**: Ingnores all words with a lower frequency than this (2,5)
+- **size**: Dimensionality of the word vectors (50,100,200,300)
+- **window size**: Maximum distance between the current and predicted word within a sentence (3,5)
+- **min count**: Ingnores all words with a lower frequency than this (2,5)
 - **workers**: Number of how many worker threads are ued to train the model(the servers, on which the training is done, have 16 VCPUs, hence this parameter is always set to 16}
-- **Sg**: Training algorithm: 1 for skip-gram and 0 for CBOW (0,1)
-- **Hs**: If 1, hierarchical softmax will be used for model training. If 0 and negative sampling is non-zero, negative sampling will be used (0,1)
-- **Negative Sampling**: If >0, negative sampling will be used. The number specifies how many noise words should be drawn
+- **sg**: Training algorithm: 1 for skip-gram and 0 for CBOW (0,1)
+- **hs**: If 1, hierarchical softmax will be used for model training. If 0 and negative sampling is non-zero, negative sampling will be used (0,1)
+- **negative sampling**: If >0, negative sampling will be used. The number specifies how many noise words should be drawn (0,8,16)
 - **CBOWMean**: Only applies, when CBOW is used. If 0, use the sum of the context word vectors and if 1 use the mean (0,1)
 
 
-A new word2vec model is created extremely straightforward by following python code (note that the parameter setting is the setting, which leads to the best model):
+A new Word2Vec model is created straightforward by following python code (note that the parameter setting is the setting that leads to the best model):
 ```markdown
 from gensim.models import Word2Vec
 
@@ -96,8 +96,8 @@ model = Word2Vec(sentences, size=300, window=3, min_count=5, workers=16, sg=1, h
 ````
 
 ### Training with other algorithms: FastText
-Word and entity embeddings are not only trained with word2vec, but also with FastText. There is also a [Python Gensim implementation of FastText](https://radimrehurek.com/gensim/models/fasttext.html).
-Instead of using the ``Word2Vec`` class, the ``FastText`` class is used to train a FastText model. The parameter are still the same:
+Word and entity embeddings are not only trained with Word2Vec, but also with FastText. There is also a [Python Gensim implementation of FastText](https://radimrehurek.com/gensim/models/fasttext.html).
+Instead of using the ``Word2Vec`` class, the ``FastText`` class is used to train a FastText model. The parameters are still the same:
 ```markdown
 from gensim.models import FastText
 
@@ -105,13 +105,13 @@ model = FastText(sentences, size=300, window=3, min_count=5, workers=16, sg=1, h
 ````
 
 ### Training with other languages 
-Easily speaking, all the things discussed above, are alo applied for the training in other languages. Everything is done as for the English models, just other ``input corpuses`` and the ``translated goldstandard datasets`` are used. Finally note, that these models are only trained for the best parameter settings from the English models, hence no intensive parameter tuning is done for the cross-lingual languages.  
+All subjects discussed above, are also applied for the training in other languages. Everything is done as for the English models, just other ``input corpuses`` and the ``translated gold standard datasets`` are used. These models are only trained for the best parameter settings from the English models, hence, no intensive parameter tuning is done for the cross-lingual languages.  
 
 ### Evaluation 
 After training, the word and entity embeddings are directly evaluated with following evaluation tasks: 
 
 #### Word related evaluation task
-The word related task is based on the idea that the similarity between two words can be measured with the cosine similarity of their word embeddings. A list of word pairs along with their similarity rating, which is judged by human annotators, have to be provided and  following [goldstandards](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) are used. Note that not all datasets are available in all languages:
+The word related task is based on the idea that the similarity between two words can be measured with the cosine similarity of their word embeddings. A list of word pairs along with their similarity rating, which is judged by human annotators, is used by this task and the following [gold standards](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) are used. Note that not all datasets are available in all languages:
 
 - Similarity353 (English, German, Italian)
 - Relatedness353 (English, German, Italian)
@@ -121,11 +121,11 @@ The word related task is based on the idea that the similarity between two words
 - SimLex999 (English, German, Italian, Spanish, French)
 - RareWord (English)
 
-The evaluation task is to measure how well the notion of word similarity according to human annotators is captured by the word embeddings. In other words, the distances between words in an embedding space can be evaluated through the human judgments on the actual semantic distances between these words. Once the cosine similarity between the words is computed, the two obtained distances are then compared with each other using Pearson or Spearman correlation. The more similar they are (i.e. Pearson or Spearman score is closed to 1), the better are the embeddings. 
+The evaluation task is to measure how well the notion of word similarity according to human annotators is captured by the word embeddings. In other words, the distances between words in an embedding space can be evaluated through the human judgments on the actual semantic distances between these words. Once the cosine similarity between the words is computed, the two obtained distances are then compared with each other using Pearson or Spearman correlation. The more similar they are (i.e. Pearson or Spearman score is close to 1), the better are the embeddings. 
 
 #### Entity evaluation task
 
-The [Kore dataset](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/ambiverse-nlu/aida/) is used as entity task. The dataset contain a total of 441 entities. There are 21 seed entities and for each seed there is a ranking of 20 candidate entities, which are linked to by the Wikipedia article of the seed. Example seed entities and Kore gold standard ranks of related entities are shown in following table:
+The [KORE dataset](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/ambiverse-nlu/aida/) is used as entity task. The dataset contain a total of 441 entities. There are 21 seed entities and for each seed there is a ranking of 20 candidate entities, which are linked to by the Wikipedia article of the seed. Example seed entities and KORE gold standard ranks of related entities are shown in the following table:
 
 | Seed | Related entity (rank) |
 | ---- | --------------------- |
@@ -135,15 +135,15 @@ The [Kore dataset](https://www.mpi-inf.mpg.de/departments/databases-and-informat
 | The Sopranos | Tony Soprano (1), David Chase (2) ...  Golden Globe Award (10), The Kings (11) ... Big Love (20) |
 | Chuck Norris | Chuck Norris facts (1), Aaaron Norris (2) ... Northrop Corporation (10), ... Priscilla Presley (20) |
 
-To measure how good the produced word and entity embeddings capture the semantic relatedness between entites following is done: For each seed entity of the Kore dataset a ranking of the 20 candidate entities is produced by using the ``word embeddings`` and the ``entity embeddings``. When using the ``word embeddings`` the similarity between the word embedding of the seed entity and the sum of the word embeddings of the single words is measured by using cosine similarity. When using entity embeddings only the entity embeddings of the given entites have to be considered. To illustarte this, a short example is given:
-Let Google be the seed entity with 3 candidate entities ranked as follows:
+To measure how good the produced word and entity embeddings capture the semantic relatedness between entities, the following is done: For each seed entity of the KORE dataset a ranking of the 20 candidate entities is produced by using the ``word embeddings`` and the ``entity embeddings``. When using the ``word embeddings`` the similarity between the word embedding of the seed entity and the sum of the word embeddings of the single words is measured by using cosine similarity. When using entity embeddings only the entity embeddings of the given entities have to be considered. To illustarte this, a short example is given:
+Let Google be the seed entity with three candidate entities ranked as follows:
 ```markdown
 Google
 	Larry Page (1)
 	Sergey Brin (2)
 	Google Maps (3)
 ```
-For the word embeddings, the similarity of the word embedding ``Google`` with the word embedding of ``Larry`` plus the word embedding of ``Page`` is measured. When considering entity embeddings, the similarity of the entity embedding ``Google`` with the entity embedding of ``Larry_Page`` is measured. Afterwords, a ranking based on the similarity score is produced, for instance
+For the word embeddings, the similarity of the word embedding ``Google`` with the word embedding of ``Larry`` plus the word embedding of ``Page`` is measured. When considering entity embeddings, the similarity of the entity embedding ``Google`` with the entity embedding of ``Larry_Page`` is measured. Afterwards, a ranking based on the similarity score is produced, for instance
 \begin{lstlisting}[language=Python]
 ```markdown
 Google	
@@ -151,11 +151,11 @@ Google
 	Larry Page (2)
 	Sergey Brin (3)
 ```
-Then the quality of the correlation between the gold ranking from Kore and the produced ranking is measured in terms of Spearman correlation and Pairwise accuracy. As result, one have for each entity seed a Spearman and Pairwise Accuracy score. Finally, it is averaged and for each method final value is reported.
+Then the quality of the correlation between the gold ranking and the produced ranking is measured in terms of Spearman correlation and Pairwise Accuracy. As result, for each entity seed a Spearman and Pairwise Accuracy score is provided. Finally, it is averaged and for each method a final value is reported.
 
-Due to the reason that the Kore dataset is only avaiable in English, it is translated into German, Italian, Spanish and French. 
+Due to the reason that the KoORE dataset is only available in English, it is translated into German, Italian, Spanish and French. 
 
-## Translation of Kore dataset
+## Translation of KORE dataset
 The Kore dataset is automatically translated into German, Italian, Spanish and French. It is done by the TranslateWikipageNames.py script and can be run by calling the command:
 ```markdown 
 python translationWikipageNames.py KoreDataset.txt KoreDataSetTranslated.txt de
