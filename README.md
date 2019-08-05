@@ -81,7 +81,7 @@ Besides the training input corpus, there are also other parameters on the Word2V
 - **size**: Dimensionality of the word vectors (50,100,200,300)
 - **window size**: Maximum distance between the current and predicted word within a sentence (3,5)
 - **min count**: Ingnores all words with a lower frequency than this (2,5)
-- **workers**: Number of how many worker threads are ued to train the model(the servers, on which the training is done, have 16 VCPUs, hence this parameter is always set to 16}
+- **workers**: Number of how many worker threads are ued to train the model (the servers, on which the training is done, have 16 VCPUs, hence this parameter is always set to 16)
 - **sg**: Training algorithm: 1 for skip-gram and 0 for CBOW (0,1)
 - **hs**: If 1, hierarchical softmax will be used for model training. If 0 and negative sampling is non-zero, negative sampling will be used (0,1)
 - **negative sampling**: If >0, negative sampling will be used. The number specifies how many noise words should be drawn (0,8,16)
@@ -144,7 +144,6 @@ Google
 	Google Maps (3)
 ```
 For the word embeddings, the similarity of the word embedding ``Google`` with the word embedding of ``Larry`` plus the word embedding of ``Page`` is measured. When considering entity embeddings, the similarity of the entity embedding ``Google`` with the entity embedding of ``Larry_Page`` is measured. Afterwards, a ranking based on the similarity score is produced, for instance
-\begin{lstlisting}[language=Python]
 ```markdown
 Google	
 	Google Maps (1)
@@ -299,7 +298,7 @@ Summing up, following conclusion can be made:
 2. The word embeddings algorithm play a central role, in particular better embeddings are generally produced by skipgram. 
 
 ### FastText
-When training the embeddings with other algorithms (FastText) no other trend can be derived (see [ResultFastText.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_FastText.xlsx)for more details).
+When training the embeddings with other algorithms (FastText) no other trend can be derived (see [ResultFastText.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_FastText.xlsx) for more details).
 
 ### Other languages
 Entity annotation has also no impact on word related tasks, when training the embeddings with other languages, expect from the Spain and French language. Better performance is also for other languages reached with entity embeddings on the entity task and in constrast to the English models also for the best models better performance on the entity task is reached by the entity embeddings. [Results_German.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_German.xlsx), [Results_Italian.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_Italian.xlsx), [Results_Spanish.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_Spanish.xlsx) and [Results_French.xlsx](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Results/Results_French.xlsx) give more details.
