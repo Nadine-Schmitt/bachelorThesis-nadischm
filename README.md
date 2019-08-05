@@ -51,14 +51,14 @@ nltk.download('punkt')
 ```
 Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html), since there can be a dot without the sentence ending, when there is an acronym (Inc. for instance). If there is a dot and the next sentence starts with an uppercase letter, then it is a new sentence. In the other case, the next sentence is appended to the current sentence. However, there are examples like _i.e. Germany_, where after a dot there is an uppercase letter, but the sentence should not be split. Therefore an [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists), which contains all acronyms with a dot of a given language, is used. If _i.e_  is for example in the [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists) then the unwanted broken sentences are combined.
 
-See the [preprocessing ipython notebook]() for more details.
+See the [preprocessing ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/Preprocessing.ipynb) for more details.
 
 
 ## Training and Evaluation
 
 ###
 
-For training word and entity embeddings and evaluating them the main.py script is used. It can be run by typing following command:
+For training word and entity embeddings and evaluating them the [main.py]() script is used (see the [main ipython notebook]()). It can be run by typing following command:
 ```markdown
 python main.py inputList_raw inputList_entity goldstandard 3 Parameter.txt -t 16
 ```
