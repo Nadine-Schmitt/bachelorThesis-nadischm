@@ -156,25 +156,28 @@ Then the quality of the correlation between the gold ranking and the produced ra
 Due to the reason that the KoORE dataset is only available in English, it is translated into German, Italian, Spanish and French. 
 
 ## Translation of KORE dataset
-The Kore dataset is automatically translated into German, Italian, Spanish and French. It is done by the TranslateWikipageNames.py script and can be run by calling the command:
+
+The Kore dataset is automatically translated into German, Italian, Spanish and French. It is done by the [translateWikipageNames.py]() script and can be run by calling the command:
 ```markdown 
 python translationWikipageNames.py KoreDataset.txt KoreDataSetTranslated.txt de
 ```
-where the ``KoreDataset.txt`` is the source folder of the original English Kore dataset, ``KoreDataSetTranslated.txt`` is the target folder in which to store the translated data and ``de`` is the language in which one would like to translate to (``de``: German ``it``: Italian, ``es``: Spanish and ``fr``: French).
+where the ``KoreDataset.txt`` is the source folder of the original English KORE dataset, ``KoreDataSetTranslated.txt`` is the target folder in which to store the translated data and ``de`` is the language in which one would like to translate to (``de``: German ``it``: Italian, ``es``: Spanish and ``fr``: French).
 
-The resulting [new datasets](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) are availble and can be downloaded. 
+The resulting [new datasets](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) are available and can be downloaded. 
 
-To translate a single entity from the English Kore dataset the [MediaWkiki Action API](https://www.mediawiki.org/wiki/API:Search) is used. For each English entity in the Kore dataset (which has an English wikipedia page), the corresponding wikipedia page in the target language is searched and then taken as translated entity. In the following code snippet the English entity _Google_ is translated into the German entity _Google+_:
+To translate a single entity from the English KORE dataset the [MediaWkiki Action API](https://www.mediawiki.org/wiki/API:Search) is used. For each English entity in the KORE dataset (which has an English Wikipedia page), the corresponding Wikipedia page in the target language has to be searched and then taken as translated entity. In the following code snippet the English entity _Google_ is translated into the German entity _Google+_:
 
 ![TranslationKore](https://user-images.githubusercontent.com/48829194/62262835-6e0ce900-b41a-11e9-8408-448e33bc640b.PNG)
 
-Note that if there is no wikipedia page in the target language available, the English wikipage name is used. 
-Furthermore, some special characters (/, +, ", !, ...) are removed from the original Kore dataset, e.g. _Game of Thrones/ Staffel 7_ is set to _Game of Thrones Staffel 7_. It is done beacuse these characters are also removed in the preprocessing process.
+See the [translateWikipageNames ipython notebook] for more examples.
 
-Remark, that there are entities in the datatset, where no corresponding embedding is existent (too less occurence of it in the input corpora for training). If it is a candidate entity then the embedding vector is set to zero. However the seed entity _Terremoti del XXI secolo_ is not avaiable in the Italian entity embedding model and therefore it is removed with its 20 cadidate entites from the original dataset. Moreover, the seed entity _Deus Ex: MankindDivided_ is not avaiable in the Spanish entity embedding model and therefore it is also removed with its 20 cadidate entites from the original dataset. Finally, as the seed entity _Sur écoute_ is not avaible in the French raw embedding model and the seed entities _Quake Champions_ and _Saison 7 de Futurama_ are not avaiable in the French entity embedding model, they are removed with their 20 candidate entities from the original dataset.
+In case that there is no Wikipedia page in the target language available the English Wikipage name is used. 
+Furthermore, some special characters (/, +, ", !, ...) are removed from the original KORE dataset, e.g. _Game of Thrones/ Staffel 7_ is set to _Game of Thrones Staffel 7_. It is done because these characters are also removed in the preprocessing process.
+
+Remark, that there are entities in the datatset, where no corresponding embedding exists (only few occurencies of it in the input corpora for training). If it is a candidate entity, then the embedding vector is set to zero. However, the seed entity _Terremoti del XXI secolo_ is not available in the Italian entity embedding model and therefore it is removed with its 20 cadidate entities from the original dataset. Moreover, the seed entity _Deus Ex: MankindDivided_ is not available in the Spanish entity embedding model and therefore it is also removed with its 20 cadidate entities from the original dataset. Finally, as the seed entity _Sur écoute_ is not availble in the French raw embedding model and the seed entities _Quake Champions_ and _Saison 7 de Futurama_ are not available in the French entity embedding model, they are removed with their 20 candidate entities from the original dataset.
 
 
-## Compare two pearson correlations
+## Compare two Pearson correlations
 In order to compare two pearson correlations the [cocor package in R](https://cran.r-project.org/web/packages/cocor/cocor.pdf) is used. It can be downloaded from the [project's homepage](https://CRAN.R-project.org/package=cocor). 
 In order to install the cocor package in R follwoing command is typed into the R console:
 ```markdown
