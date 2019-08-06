@@ -225,14 +225,14 @@ python CountWords_Entity.py Kore.txt inputList_entity
 for the ``entity model``. ``Kore.txt`` is the KORE dataset in the corresponding language and the second argument is the ``input corpus``. The fuctionality is simple: For each entity from the KORE datatset the number of occurences is calculated and printed as output. The results can be seen in the [excel files](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/Results/FrequencyWords).
 
 
-### Qualitative examination
+### Qualitative examinations
 
-A qualitative examination is done by using the [SemanticArithmetic.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/SemanticArithmetic.py) script. It can be run with following command:
+A qualitative examination is done by using the [QualitativeExaminations.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/QualitativeExaminations.py) script. It can be run with following command:
 ```markdown
-python SemanticArithmetic.py inputList_raw Parameter.txt -t 16
+python QualitativeExaminations.py inputList_raw Parameter.txt -t 16
 ``` 
 where `inputList_raw` is the input corpus for training, `Parameter.txt` the parameters for which the training should be done and `16 threads` are used. 
-The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is used in this script and it is a method to reduce the number of dimensions of highdimensional vectors, while keeping main features (= the principal components). At first the model is trained with the specified parameters from `Parameter.txt` and afterwards, the high dimensions of the vectors (e.g. 300) are reduced to a two-dimensional representation and plotted with [pythons matplotlib](https://matplotlib.org) for some word classes, e.g. countries and their their corresponding languages:
+The [Principal Component Analysis](https://en.wikipedia.org/wiki/Principal_component_analysis) is used in this script and it is a method to reduce the number of dimensions of high-dimensional vectors, while keeping main features, which are the principal components. At first the model is trained with the specified parameters from `Parameter.txt` and afterwards, the high dimensions of the embeddings (e.g. 300) are reduced to a two-dimensional representation and plotted with [pythons matplotlib](https://matplotlib.org) for some classes of words, e.g. countries and their their corresponding languages:
 
 ![PCALanguage](https://user-images.githubusercontent.com/48829194/62262257-52084800-b418-11e9-9f79-1116f4e69eb9.png)
 
@@ -242,7 +242,7 @@ In addition, the [most_similar() function](https://radimrehurek.com/gensim/model
 
 ![SemanticArithmetic_Cucumber](https://user-images.githubusercontent.com/48829194/62340643-8d6e4980-b4e0-11e9-827e-84cd27e2b8f2.PNG)
 
-The [SemanticArithmetic ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/SemanticArithmetic.ipynb) present more examples.
+The [QualitativeExaminations ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/QualitativeExaminations.ipynb) presents more examples.
 
 ## Results
 
