@@ -40,7 +40,7 @@ for example for the ``german raw inputList`` and
 ```markdown
 python preproccesing.py WikiExtracted inputList_entity AcronymList -e -ger
 ```
-for the ``german entity inputList``. So, the ``extracted Wikipedia dump`` is needed as input, as well as an [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists). Moreover, it must also be specified if a need arises for a raw or entity corpus (with parameter -e) and the decision of which language is used (``ger`` for German, ``it`` for Italian, ``es`` for Spanish and ``fr`` for French}. Besides, the output is stored in the ``inputList_raw`` or ``inputList_entity`` directory. Optionally it is also possible to lower casing the input text (setting ``-l`` flag), however, better word and entity embeddings are always achived when not lower casing the input corpora, why it is not applied.
+for the ``german entity inputList``. So, the ``extracted Wikipedia dump`` is needed as input, as well as an [AcronymList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists). Moreover, it must also be specified if a need arises for a raw or entity corpus (with parameter -e) and the decision of which language is used (``ger`` for German, ``it`` for Italian, ``es`` for Spanish and ``fr`` for French}. Besides, the output is stored in the ``inputList_raw`` or ``inputList_entity`` directory. Optionally it is also possible to lower casing the input text (setting ``-l`` flag), however, better word and entity embeddings are always achived when not lower casing the input corpora, why it is not applied.
 
 Note, that for splitting the text into a list of individual sentences (Word2Vec requires text, which is organized into sentences, as input) [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html) is used and have to be imported beforehand by running following commands:
 ```markdown
@@ -49,7 +49,7 @@ python
 import nltk
 nltk.download('punkt')
 ```
-Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html), since there can be a dot without the sentence ending, when there is an acronym (Inc. for instance). If there is a dot and the next sentence starts with an uppercase letter, then it is a new sentence. In the other case, the next sentence is appended to the current sentence. However, there are examples like _i.e. Germany_, where after a dot there is an uppercase letter, but the sentence should not be split. Therefore an [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists), which contains all acronyms with a dot of a given language, is used. If _i.e_  is for example in the [AcronomyList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists) then the unwanted broken sentences are combined.
+Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html), since there can be a dot without the sentence ending, when there is an acronym (Inc. for instance). If there is a dot and the next sentence starts with an uppercase letter, then it is a new sentence. In the other case, the next sentence is appended to the current sentence. However, there are examples like _i.e. Germany_, where after a dot there is an uppercase letter, but the sentence should not be split. Therefore an [AcronymList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists), which contains all acronyms with a dot of a given language, is used. If _i.e_  is for example in the [AcronymList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists) then the unwanted broken sentences are combined.
 
 See the [preprocessing ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/Preprocessing.ipynb) for more details.
 
@@ -71,7 +71,7 @@ In order to use [Gensim's Word2Vec libary](https://radimrehurek.com/gensim/model
 sudo chmod -R 777 bin
 easy_install --upgrade gensim
 ```
-For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text is needed to be loaded and organised into sentences and provided to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.PathLineSentence) is applied and the preprocessed input corpus is loaded as following:
+For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text is needed to be loaded and organised into sentences and provided to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.LineSentence) is applied and the preprocessed input corpus is loaded as following:
 ```markdown
 sentences = gensim.models.word2vec.PathLineSentences(inputList)
 ```
@@ -214,7 +214,7 @@ All the calculated results can be seen on the [excel files](https://github.com/N
 ## Further analysis
 
 ### Frequency of words
-In order to calculate the number of occurence in the ``raw`` and ``entity input corpus`` for the entities of the KORE dataset the [CountWords_Raw.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_RAW.py) and [CountWords_entity.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_Entity.py) scripts are used and can be run with following command (see the [CountWords_Raw](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_RAW.ipynb) and [CountWords_Entity ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_Entity.ipynb)):
+In order to calculate the number of occurence in the ``raw`` and ``entity input corpus`` for the entities of the KORE dataset the [CountWords_Raw.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_Raw.py) and [CountWords_Entity.py](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_Entity.py) scripts are used and can be run with following command (see the [CountWords_Raw](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_Raw.ipynb) and [CountWords_Entity ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/CountWords_Entity.ipynb)):
 ```markdown
 python CountWords_Raw.py Kore.txt inputList_raw
 ```
