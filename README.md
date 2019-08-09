@@ -71,7 +71,7 @@ In order to use [Gensim's Word2Vec libary](https://radimrehurek.com/gensim/model
 sudo chmod -R 777 bin
 easy_install --upgrade gensim
 ```
-For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text is needed to be loaded and organised into sentences and provided to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.LineSentence) is applied and the preprocessed input corpus is loaded as following:
+For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text is needed to be loaded and organised into sentences and provided to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.PathLineSentence) is applied and the preprocessed input corpus is loaded as following:
 ```markdown
 sentences = gensim.models.word2vec.PathLineSentences(inputList)
 ```
@@ -164,7 +164,7 @@ where the ``KoreDataset.txt`` is the source folder of the original English KORE 
 
 The resulting [new datasets](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/data) are available and can be downloaded. 
 
-To translate a single entity from the English KORE dataset the [MediaWkiki Action API](https://www.mediawiki.org/wiki/API:Search) is used. For each English entity in the KORE dataset (which has an English Wikipedia page), the corresponding Wikipedia page in the target language has to be searched and then taken as translated entity. In the following code snippet the English entity _Google_ is translated into the German entity _Google+_:
+To translate a single entity from the English KORE dataset the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Search) is used. For each English entity in the KORE dataset (which has an English Wikipedia page), the corresponding Wikipedia page in the target language has to be searched and then taken as translated entity. In the following code snippet the English entity _Google_ is translated into the German entity _Google+_:
 
 ![TranslationKore](https://user-images.githubusercontent.com/48829194/62262835-6e0ce900-b41a-11e9-8408-448e33bc640b.PNG)
 
