@@ -71,7 +71,7 @@ In order to use [Gensim's Word2Vec libary](https://radimrehurek.com/gensim/model
 sudo chmod -R 777 bin
 easy_install --upgrade gensim
 ```
-For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text is needed to be loaded and organised into sentences and provided to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.PathLineSentence) is applied and the preprocessed input corpus is loaded as following:
+For working with the Word2Vec model a ``Word2Vec class`` is provided by Gensim.  In order to learn a word embedding from text, the text is needed to be loaded and organised into sentences and provided to the constructor of a new ``Word2Vec() instance``. [PathLineSentence](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.LineSentence) is applied and the preprocessed input corpus is loaded as following:
 ```markdown
 sentences = gensim.models.word2vec.PathLineSentences(inputList)
 ```
