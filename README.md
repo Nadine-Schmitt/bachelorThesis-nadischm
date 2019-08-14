@@ -49,7 +49,7 @@ python
 import nltk
 nltk.download('punkt')
 ```
-Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html), since there can be a dot without the sentence ending, when there is an acronym (Inc. for instance). If there is a dot and the next sentence starts with an uppercase letter, then it is a new sentence. In the other case, the next sentence is appended to the current sentence. However, there are examples like _i.e. Germany_, where after a dot there is an uppercase letter, but the sentence should not be split. Therefore an [AcronymList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists), which contains all acronyms with a dot of a given language, is used. If _i.e_  is for example in the [AcronymList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists) then the unwanted broken sentences are combined.
+Besides, sometimes sentences are unwanted broken by [nltk.sent_tokenize utility](https://www.nltk.org/api/nltk.tokenize.html), since there can be a dot without the sentence ending, when there is an acronym (Inc. for instance). If there is a dot and the next sentence starts with an uppercase letter, then it is a new sentence. In the other case, the next sentence is appended to the current sentence. However, there are examples like _i.e. Germany_, where after a dot there is an uppercase letter, but the sentence should not be split. Therefore an [AcronymList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists), which contains all acronyms with a dot of a given language, is used. If _i.e._  is for example in the [AcronymList](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/tree/master/AcronymLists) then the unwanted broken sentences are combined.
 
 See the [preprocessing ipython notebook](https://github.com/Nadine-Schmitt/bachelorThesis-nadischm/blob/master/Code/Preprocessing.ipynb) for more details.
 
@@ -152,7 +152,7 @@ Google
 ```
 Then the quality of the correlation between the gold ranking and the produced ranking is measured in terms of Spearman correlation and Pairwise Accuracy. As result, for each entity seed a Spearman and Pairwise Accuracy score is provided. Finally, it is averaged and for each method a final value is reported.
 
-Due to the reason that the KoORE dataset is only available in English, it is translated into German, Italian, Spanish and French. 
+Due to the reason that the KORE dataset is only available in English, it is translated into German, Italian, Spanish and French. 
 
 ## Translation of KORE dataset
 
